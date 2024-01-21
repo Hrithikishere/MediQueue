@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
 class DoctorCard extends StatelessWidget {
-  const DoctorCard({super.key});
+  final String doctorImageAddress;
+  final String doctorName;
+  final String doctorRating;
+  final String doctorType;
+
+  const DoctorCard({
+    required this.doctorImageAddress,
+    required this.doctorName,
+    required this.doctorRating,
+    required this.doctorType,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +24,13 @@ class DoctorCard extends StatelessWidget {
             color: Colors.deepPurple[100],
             borderRadius: BorderRadius.circular(7),
           ),
-          child: const Column(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircleAvatar(
                 radius: 35,
                 backgroundImage: NetworkImage(
-                  'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
+                  doctorImageAddress,
                 ),
               ),
               SizedBox(height: 7),
@@ -30,24 +40,25 @@ class DoctorCard extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.star,
+                    color: Colors.amber,
                     size: 15,
                   ),
                   Text(
-                    " 4.9",
+                    " $doctorRating",
                     style: TextStyle(fontSize: 12),
                   ),
                 ],
               ),
               SizedBox(height: 7),
               Text(
-                "Dr. Arlene McCoy",
+                doctorName,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
-                "Therapist, 7 yrs",
+                doctorType,
                 style: TextStyle(
                   fontSize: 12,
                 ),

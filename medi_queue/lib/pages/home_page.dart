@@ -151,36 +151,65 @@ class HomePage extends StatelessWidget {
 
               const SizedBox(height: 15),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Doctor List",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "See all",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey[500]),
+              Container(
+                height: 25,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Doctor List",
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
-                  ),
-                ],
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "See all",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey[500]),
+                      ),
+                    ),
+                  ],
+                ),
               ),
 
               const SizedBox(height: 15),
 
-              Container(
+              SizedBox(
                 height: 200,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-                  children: [
-                    DoctorCard(),
-                    DoctorCard(),
-                    DoctorCard(),
+                  children: const [
+                    DoctorCard(
+                      doctorImageAddress:
+                          'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
+                      doctorName: 'Dr. Rahim bhai',
+                      doctorRating: '4.8',
+                      doctorType: 'Surgeon',
+                    ),
+                    DoctorCard(
+                      doctorImageAddress:
+                          'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
+                      doctorName: 'Dr. Karim bhai',
+                      doctorRating: '4.9',
+                      doctorType: 'Therapist',
+                    ),
+                    DoctorCard(
+                      doctorImageAddress:
+                          'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
+                      doctorName: 'Dr. Zakir bhai',
+                      doctorRating: '4.8',
+                      doctorType: 'Dentist',
+                    ),
+                    DoctorCard(
+                      doctorImageAddress:
+                          'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
+                      doctorName: 'Dr. Mahir bhai',
+                      doctorRating: '4.5',
+                      doctorType: 'Nutririonist',
+                    ),
                   ],
                 ),
               ),
