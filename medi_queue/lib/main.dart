@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:medi_queue/framework/helpers/constants/colors.dart';
+import 'package:medi_queue/pages/blogs_page.dart';
 
+import 'package:google_fonts/google_fonts.dart';
 import 'pages/home_page.dart';
 
 void main() {
@@ -13,8 +16,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      home: BlogsPage(),
+      theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+          textTheme: GoogleFonts.poppinsTextTheme(TextTheme(
+              displayLarge: TextStyle(
+                color: textLightColor,
+              ),
+              bodySmall: TextStyle(color: textDimColor)))),
     );
   }
 }
