@@ -3,6 +3,7 @@ import 'package:medi_queue/framework/helpers/constants/colors.dart';
 import 'package:medi_queue/util/appointment_card.dart';
 import 'package:medi_queue/util/blogs_card.dart';
 import 'package:medi_queue/util/category_card.dart';
+import 'package:medi_queue/util/category_list_item.dart';
 import 'package:medi_queue/util/common/topAppbar.dart';
 import 'package:medi_queue/util/doctor_card.dart';
 import 'package:medi_queue/util/doctor_list_item.dart';
@@ -21,11 +22,11 @@ class BlogsPage extends StatelessWidget {
         child: Column(
           children: [
             TopAppBar(),
-            BlogsCard(),
+            // BlogsCard(),
             // BlogsCard(),
             // AppointmentCard(),
             // NextAppointmentCard(),
-            CategoryCard(cardName: "Ophthalmologist", onPressed: () {}),
+            // CategoryCard(cardName: "Ophthalmologist", onPressed: () {}),
             const DoctorCard(
               doctorImageAddress:
                   'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
@@ -54,6 +55,7 @@ class BlogsPage extends StatelessWidget {
               ),
             ),
             DoctorListItem(),
+            CategoryListItem(),
           ],
         ),
       )),

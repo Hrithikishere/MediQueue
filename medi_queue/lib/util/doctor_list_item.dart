@@ -17,57 +17,67 @@ class DoctorListItem extends StatelessWidget {
           Flexible(
             flex: 11,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              padding: EdgeInsets.all(15),
               decoration: BoxDecoration(
                   color: glassyColor, borderRadius: BorderRadius.circular(10)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   //doctor name category rating
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Dr. Md. Sayeedul Islam",
-                        style: Theme.of(context)
-                            .textTheme
-                            .displayLarge!
-                            .copyWith(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: 7),
-                      Text(
-                        "Dentist",
-                        style:
-                            Theme.of(context).textTheme.displayLarge!.copyWith(
-                                  fontSize: 13,
-                                ),
-                      ),
-                      SizedBox(height: 7),
-                      //Ratings
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "4.9",
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayLarge!
-                                .copyWith(
-                                  fontSize: 13,
-                                ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 3, bottom: 2),
-                            child: Icon(
-                              Icons.star,
-                              color: textLightColor,
-                              size: 13,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Dr. Md. Sayeedul Islam",
+                          maxLines: 2,
+                          overflow: TextOverflow
+                              .ellipsis, // Handle overflow gracefully
+                          softWrap: true,
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayLarge!
+                              .copyWith(
+                                  fontSize: 17, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          "Dentist",
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayLarge!
+                              .copyWith(
+                                fontSize: 13,
+                              ),
+                        ),
+                        SizedBox(height: 5),
+                        //Ratings
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              "4.9",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .displayLarge!
+                                  .copyWith(
+                                    fontSize: 13,
+                                  ),
                             ),
-                          )
-                        ],
-                      ),
-                    ],
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 3, bottom: 2),
+                              child: Icon(
+                                Icons.star,
+                                color: textLightColor,
+                                size: 13,
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                   CircleAvatar(
                     radius: 35,
@@ -96,20 +106,25 @@ class DoctorListItem extends StatelessWidget {
                 children: [
                   //left side
                   Container(
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "FCPS, PGT, BDS, (DDC) \n(EX)Associate Professor & Head \nSpeciality in Orthodontics & Cosmetic dentistry",
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayLarge!
-                                .copyWith(
-                                  fontSize: 12,
-                                ),
-                          ),
-                        ]),
+                    child: Expanded(
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            //qualifications
+                            Text(
+                              "FCPS, PGT, BDS, (DDC) \n(EX)Associate Professor & Head \nSpeciality in Orthodontics & Cosmetic dentistry",
+                              maxLines: 3,
+                              overflow: TextOverflow
+                                  .ellipsis, // Handle overflow gracefully
+                              softWrap: true,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .displayLarge!
+                                  .copyWith(fontSize: 12, height: 1.3),
+                            ),
+                          ]),
+                    ),
                   ),
                   //right side
                   Container(
