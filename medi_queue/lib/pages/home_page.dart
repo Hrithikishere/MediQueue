@@ -127,22 +127,18 @@ class HomePage extends StatelessWidget {
                   children: [
                     CategoryCard(
                       cardName: "Surgeon",
-                      icon: Icon(Icons.airline_seat_flat_angled_outlined),
                       onPressed: () {},
                     ),
                     CategoryCard(
                       cardName: "Dentist",
-                      icon: Icon(Icons.sentiment_very_satisfied_outlined),
                       onPressed: () {},
                     ),
                     CategoryCard(
                       cardName: "Pharmacist",
-                      icon: Icon(Icons.medication_rounded),
                       onPressed: () {},
                     ),
                     CategoryCard(
                       cardName: "Nutritionist",
-                      icon: Icon(Icons.food_bank_outlined),
                       onPressed: () {},
                     ),
                   ],

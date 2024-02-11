@@ -1,31 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:medi_queue/framework/helpers/constants/colors.dart';
 
 class CategoryCard extends StatelessWidget {
   final String cardName;
-  final Icon icon;
   VoidCallback onPressed;
   CategoryCard({
     required this.cardName,
-    required this.icon,
     required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 10),
-      padding: EdgeInsets.all(15),
-      decoration: BoxDecoration(
-          color: Colors.deepPurple[100],
-          borderRadius: BorderRadius.circular(7)),
-      child: TextButton.icon(
-        onPressed: onPressed,
-        icon: icon,
-        label: Text(
-          cardName,
-          style: TextStyle(fontSize: 16),
-        ),
-      ),
-    );
+        height: 130,
+        margin: EdgeInsets.only(right: 10),
+        padding: EdgeInsets.all(15),
+        decoration: BoxDecoration(
+            color: glassyColor, borderRadius: BorderRadius.circular(10)),
+        child: InkWell(
+          onTap: onPressed,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.accessibility_outlined,
+                size: 60,
+                color: secondaryColor,
+              ),
+              const SizedBox(
+                height: 14,
+              ),
+              Text(
+                cardName,
+                style: Theme.of(context)
+                    .textTheme
+                    .displayLarge!
+                    .copyWith(fontSize: 10),
+              ),
+            ],
+          ),
+        ));
   }
 }

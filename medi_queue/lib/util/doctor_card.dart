@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medi_queue/framework/helpers/constants/colors.dart';
 
 class DoctorCard extends StatelessWidget {
   final String doctorImageAddress;
@@ -16,19 +17,20 @@ class DoctorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 10),
       child: Center(
         child: Container(
-          width: 160,
+          padding: EdgeInsets.symmetric(vertical: 20),
+          width: 200,
           decoration: BoxDecoration(
-            color: Colors.deepPurple[100],
+            color: glassyColor,
             borderRadius: BorderRadius.circular(7),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              //image
               CircleAvatar(
-                radius: 35,
+                radius: 40,
                 backgroundImage: NetworkImage(
                   doctorImageAddress,
                 ),
@@ -40,28 +42,31 @@ class DoctorCard extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.star,
-                    color: Colors.amber,
-                    size: 15,
+                    color: secondaryColor,
+                    size: 18,
                   ),
                   Text(
                     " $doctorRating",
-                    style: TextStyle(fontSize: 12),
+                    style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                          fontSize: 14,
+                        ),
                   ),
                 ],
               ),
-              SizedBox(height: 7),
+              SizedBox(height: 15),
               Text(
                 doctorName,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                      fontSize: 18,
+                    ),
               ),
+              SizedBox(height: 4),
               Text(
                 doctorType,
-                style: TextStyle(
-                  fontSize: 12,
-                ),
+                style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                      fontSize: 12,
+                    ),
               ),
             ],
           ),
