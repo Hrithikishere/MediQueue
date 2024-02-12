@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
+import 'package:medi_queue/util/common/bottomAppBar.dart';
 import 'package:medi_queue/util/common/topAppbar.dart';
 
 class BlogDescriptionPage extends StatelessWidget {
@@ -116,6 +117,7 @@ class BlogDescriptionPage extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: BottomAppBars(),
     );
   }
 }
