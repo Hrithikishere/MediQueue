@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
 import 'package:medi_queue/util/common/bottomAppBar.dart';
+import 'package:medi_queue/util/common/text_description_card.dart';
 import 'package:medi_queue/util/common/topAppbar.dart';
 
 class BlogDescriptionPage extends StatelessWidget {
@@ -98,21 +99,10 @@ class BlogDescriptionPage extends StatelessWidget {
                 height: 10,
               ),
               //description
-              Container(
-                height: 550,
-                padding: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                    color: glassyColor,
-                    borderRadius: BorderRadius.circular(15)),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Text(
-                    "Historically, men have been hesitant to seek medical attention when something seems wrong with their health. Also, men aren't as likely as women to have preventive screenings and checkups with their health care team. This is a problem because early detection of a medical issue is the best way to improve effectiveness of condition treatment and management.Delaying or avoiding a checkup or screening could lead to a treatable situation turning deadly.While some screenings, such as HIV and hepatitis C, are recommended to have once, other screenings for certain cancers should be performed regularly.Vaccines are important to prevent infectious diseases. Vaccinations for men are administered at different intervals throughout adulthood.So, men, reconsider your reservations and talk to your health care team about potentially lifesaving screening.Men older than 50 should have a yearly physical exam, and men younger than 50 should have a physical exam every three to five years. Even if you're feeling healthy, a regular checkup with your health care team is a good way to validate your health or identify a problem in its early stages. health care team is a good way to validate your health or identify a problem in its early stages. health care team is a good way to validate your health or identify a problem in its early stages.",
-                    softWrap: true,
-                    style: TextStyle(color: textLightColor),
-                  ),
-                ),
-              ),
+              TextDescriptionCard(
+                  containerHeight: 550,
+                  description:
+                      "The digestive system speaks a language I understand. After years of training (MBBS, FCPS, MD), I decipher its whispers to diagnose and treat liver, pancreatic, and other gut issues. At Enam Medical College & Hospital, I double down: guiding patients as a Professor and navigating their digestive journeys as a Gastroenterologist. Whether it's chronic pain, liver concerns, or gut health, every victory fuels my passion. Empowering individuals to reclaim their well-being is my mission.The digestive system speaks a language I understand. After years of training (MBBS, FCPS, MD), I decipher its whispers to diagnose and treat liver, pancreatic, and other gut issues. At Enam Medical College & Hospital, I double down: guiding patients as a Professor and navigating their digestive journeys as a Gastroenterologist. Whether it's chronic pain, liver concerns, or gut health, every victory fuels my passion. Empowering individuals to reclaim their well-being is my mission.The digestive system speaks a language I understand. After years of training (MBBS, FCPS, MD), I decipher its whispers to diagnose and treat liver, pancreatic, and other gut issues. At Enam Medical College & Hospital, I double down: guiding patients as a Professor and navigating their digestive journeys as a Gastroenterologist. Whether it's chronic pain, liver concerns, or gut health, every victory fuels my passion. Empowering individuals to reclaim their well-being is my mission."),
             ],
           ),
         ),

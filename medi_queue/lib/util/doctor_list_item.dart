@@ -41,7 +41,7 @@ class DoctorListItem extends StatelessWidget {
                               .copyWith(
                                   fontSize: 17, fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(height: 5),
+                        SizedBox(height: 1),
                         Text(
                           "Dentist",
                           style: Theme.of(context)
@@ -51,7 +51,7 @@ class DoctorListItem extends StatelessWidget {
                                 fontSize: 13,
                               ),
                         ),
-                        SizedBox(height: 5),
+                        SizedBox(height: 1),
                         //Ratings
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,

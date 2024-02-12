@@ -4,6 +4,7 @@ import 'package:medi_queue/util/appointment_card.dart';
 import 'package:medi_queue/util/blogs_card.dart';
 import 'package:medi_queue/util/category_card.dart';
 import 'package:medi_queue/util/category_list_item.dart';
+import 'package:medi_queue/util/common/text_description_card.dart';
 import 'package:medi_queue/util/common/topAppbar.dart';
 import 'package:medi_queue/util/doctor_card.dart';
 import 'package:medi_queue/util/doctor_list_item.dart';
@@ -56,6 +57,10 @@ class BlogsPage extends StatelessWidget {
             ),
             DoctorListItem(),
             CategoryListItem(),
+            TextDescriptionCard(
+                containerHeight: 200,
+                description:
+                    "The digestive system speaks a language I understand. After years of training (MBBS, FCPS, MD), I decipher its whispers to diagnose and treat liver, pancreatic, and other gut issues. At Enam Medical College & Hospital, I double down: guiding patients as a Professor and navigating their digestive journeys as a Gastroenterologist. Whether it's chronic pain, liver concerns, or gut health, every victory fuels my passion. Empowering individuals to reclaim their well-being is my mission."),
           ],
         ),
       )),
