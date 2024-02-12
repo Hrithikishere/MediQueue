@@ -18,7 +18,7 @@ class BlogDescriptionPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TopAppBar(),
+              TopAppBar(title: "Blogs"),
               //post title
               Text(
                 "Why Men Should Stay on Top of Health Screenings",

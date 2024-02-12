@@ -1,5 +1,3 @@
-import 'package:flutter/physics.dart';
-
 class Blogs {
   int id = 0;
   String title = "";

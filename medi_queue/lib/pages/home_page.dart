@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:medi_queue/framework/helpers/constants/colors.dart';
+import 'package:medi_queue/util/appointment_card.dart';
 import 'package:medi_queue/util/category_card.dart';
+import 'package:medi_queue/util/common/bottomAppBar.dart';
 import 'package:medi_queue/util/doctor_card.dart';
+import 'package:medi_queue/util/next_appointment_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,11 +12,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: primaryColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //appbar
               Padding(
@@ -20,108 +25,77 @@ class HomePage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "Hello",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayLarge!
+                              .copyWith(fontSize: 14),
                         ),
                         Text(
-                          "Mr. ABC",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                          "Mr. Abdur Rouf",
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayLarge!
+                              .copyWith(fontSize: 20),
                         ),
                       ],
                     ),
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                          color: Colors.deepPurple[100],
+                          color: secondaryColor,
                           borderRadius: BorderRadius.circular(12)),
-                      child: const Icon(Icons.person),
+                      child: Icon(Icons.person, color: textLightColor),
                     )
                   ],
                 ),
               ),
 
               //card
-              Container(
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFe9a5e0),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      //left side icon
-                      SizedBox(
-                        height: 100,
-                        width: 100,
-                        child: Image.asset(
-                          'assets/images/consult.png',
-                          height: 10,
-                          width: 10,
-                        ),
-                      ),
-                      const SizedBox(width: 25),
-                      //text + button
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "How do you feel?",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            const SizedBox(height: 5),
-                            const Text("Fill out your medical card right now"),
-                            const SizedBox(height: 5),
-                            Container(
-                              height: 40,
-                              decoration: BoxDecoration(
-                                color: Colors.deepPurple[300],
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Center(
-                                  child: TextButton(
-                                child: const Text(
-                                  "Get Started",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                onPressed: () {},
-                              )),
-                            ),
-                          ],
-                        ),
-                      )
-                    ]),
-              ),
+              NextAppointmentCard(),
               const SizedBox(height: 15),
               //search bar
 
               Container(
-                padding: const EdgeInsets.all(7),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 decoration: BoxDecoration(
-                  color: Colors.deepPurple[100],
+                  color: glassyColor,
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const TextField(
+                child: TextField(
+                  style: TextStyle(color: textLightColor),
                   decoration: InputDecoration(
-                    hintText: 'Enter a search term',
-                    prefixIcon: Icon(Icons.search),
+                    hintText: 'Search',
+                    hintStyle: TextStyle(color: textLightColor),
+                    suffixIcon: Icon(
+                      Icons.search,
+                      color: textLightColor,
+                    ),
                     border: InputBorder.none,
                   ),
                 ),
               ),
               //horizontal category
-              const SizedBox(height: 15),
-
-              //doctor list
-              SizedBox(
-                height: 60,
+              const SizedBox(height: 5),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Text(
+                  "Categories",
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayLarge!
+                      .copyWith(fontSize: 18),
+                ),
+              ),
+              //doctor Category
+              Container(
+                height: 120,
+                margin: EdgeInsets.only(top: 5),
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
@@ -152,10 +126,15 @@ class HomePage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Doctor List",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text(
+                        "Top Doctors",
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayLarge!
+                            .copyWith(fontSize: 18),
+                      ),
                     ),
                     TextButton(
                       onPressed: () {},
@@ -213,6 +192,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: BottomAppBars(),
     );
   }
 }
