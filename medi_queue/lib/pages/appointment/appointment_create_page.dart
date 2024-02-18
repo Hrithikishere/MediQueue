@@ -39,6 +39,7 @@ class AppointmentCreatePage extends StatelessWidget {
                       Flexible(
                         flex: 2,
                         child: Container(
+                          padding: EdgeInsets.only(bottom: 2, top: 2),
                           child: ClipOval(
                             child: CachedNetworkImage(
                               imageUrl:
