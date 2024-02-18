@@ -35,7 +35,7 @@ class BottomAppBars extends StatelessWidget {
     } else {}
 
     return Container(
-      margin: EdgeInsets.all(20),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
