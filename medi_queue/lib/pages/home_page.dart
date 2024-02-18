@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:medi_queue/util/category_card.dart';
-import 'package:medi_queue/util/doctor_card.dart';
+import 'package:flutter/rendering.dart';
+import 'package:go_router/go_router.dart';
+import 'package:medi_queue/framework/helpers/constants/colors.dart';
+import 'package:medi_queue/util/appointment/appointment_card.dart';
+import 'package:medi_queue/util/category/category_card.dart';
+import 'package:medi_queue/util/common/bottomAppBar.dart';
+import 'package:medi_queue/util/doctor/doctor_card.dart';
+import 'package:medi_queue/util/appointment/next_appointment_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,210 +14,234 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: primaryColor,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
-          child: Column(
-            children: [
-              //appbar
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 25),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Hello",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        Text(
-                          "Mr. ABC",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                          color: Colors.deepPurple[100],
-                          borderRadius: BorderRadius.circular(12)),
-                      child: const Icon(Icons.person),
-                    )
-                  ],
-                ),
-              ),
-
-              //card
-              Container(
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFe9a5e0),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //appbar
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 25),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      //left side icon
-                      SizedBox(
-                        height: 100,
-                        width: 100,
-                        child: Image.asset(
-                          'assets/images/consult.png',
-                          height: 10,
-                          width: 10,
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Hello",
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayLarge!
+                                .copyWith(fontSize: 14),
+                          ),
+                          Text(
+                            "Mr. Abdur Rouf",
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayLarge!
+                                .copyWith(fontSize: 20),
+                          ),
+                        ],
                       ),
-                      const SizedBox(width: 25),
-                      //text + button
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "How do you feel?",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            const SizedBox(height: 5),
-                            const Text("Fill out your medical card right now"),
-                            const SizedBox(height: 5),
-                            Container(
-                              height: 40,
-                              decoration: BoxDecoration(
-                                color: Colors.deepPurple[300],
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Center(
-                                  child: TextButton(
-                                child: const Text(
-                                  "Get Started",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                onPressed: () {},
-                              )),
-                            ),
-                          ],
+                      InkWell(
+                        onTap: () {
+                          context.go('/my_profile');
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                              color: secondaryColor,
+                              borderRadius: BorderRadius.circular(12)),
+                          child: Icon(Icons.person, color: textLightColor),
                         ),
                       )
-                    ]),
-              ),
-              const SizedBox(height: 15),
-              //search bar
-
-              Container(
-                padding: const EdgeInsets.all(7),
-                decoration: BoxDecoration(
-                  color: Colors.deepPurple[100],
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Enter a search term',
-                    prefixIcon: Icon(Icons.search),
-                    border: InputBorder.none,
+                    ],
                   ),
                 ),
-              ),
-              //horizontal category
-              const SizedBox(height: 15),
 
-              //doctor list
-              SizedBox(
-                height: 60,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    CategoryCard(
-                      cardName: "Surgeon",
-                      onPressed: () {},
-                    ),
-                    CategoryCard(
-                      cardName: "Dentist",
-                      onPressed: () {},
-                    ),
-                    CategoryCard(
-                      cardName: "Pharmacist",
-                      onPressed: () {},
-                    ),
-                    CategoryCard(
-                      cardName: "Nutritionist",
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-              ),
+                //card
+                InkWell(
+                    onTap: () {
+                      context.go('/appointment_details');
+                    },
+                    child: NextAppointmentCard()),
+                const SizedBox(height: 15),
+                //search bar
 
-              const SizedBox(height: 15),
-
-              Container(
-                height: 25,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Doctor List",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "See all",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey[500]),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  decoration: BoxDecoration(
+                    color: glassyColor,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: TextField(
+                    style: TextStyle(color: textLightColor),
+                    decoration: InputDecoration(
+                      hintText: 'Search',
+                      hintStyle: TextStyle(color: textLightColor),
+                      suffixIcon: Icon(
+                        Icons.search,
+                        color: textLightColor,
                       ),
+                      border: InputBorder.none,
                     ),
-                  ],
+                  ),
                 ),
-              ),
-
-              const SizedBox(height: 15),
-
-              SizedBox(
-                height: 200,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: const [
-                    DoctorCard(
-                      doctorImageAddress:
-                          'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
-                      doctorName: 'Dr. Rahim bhai',
-                      doctorRating: '4.8',
-                      doctorType: 'Surgeon',
-                    ),
-                    DoctorCard(
-                      doctorImageAddress:
-                          'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
-                      doctorName: 'Dr. Karim bhai',
-                      doctorRating: '4.9',
-                      doctorType: 'Therapist',
-                    ),
-                    DoctorCard(
-                      doctorImageAddress:
-                          'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
-                      doctorName: 'Dr. Zakir bhai',
-                      doctorRating: '4.8',
-                      doctorType: 'Dentist',
-                    ),
-                    DoctorCard(
-                      doctorImageAddress:
-                          'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
-                      doctorName: 'Dr. Mahir bhai',
-                      doctorRating: '4.5',
-                      doctorType: 'Nutririonist',
-                    ),
-                  ],
+                //horizontal category
+                const SizedBox(height: 5),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Text(
+                    "Categories",
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayLarge!
+                        .copyWith(fontSize: 18),
+                  ),
                 ),
-              ),
-            ],
+                //doctor Category
+                Container(
+                  height: 120,
+                  margin: EdgeInsets.only(top: 5),
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      CategoryCard(
+                        cardName: "Surgeon",
+                        iconData: Icons.masks_sharp,
+                        onPressed: () {
+                          context.go('/doctor_surgeon');
+                        },
+                      ),
+                      CategoryCard(
+                        iconData: Icons.remove_red_eye_outlined,
+                        cardName: "Ophthalmologist",
+                        onPressed: () {
+                          context.go('/doctor_ophthalmologist');
+                        },
+                      ),
+                      CategoryCard(
+                        cardName: "Medicine",
+                        iconData: Icons.medical_services_outlined,
+                        onPressed: () {
+                          context.go('/doctor_medicine');
+                        },
+                      ),
+                      CategoryCard(
+                        cardName: "Cardioloigst",
+                        iconData: Icons.airline_seat_legroom_reduced_rounded,
+                        onPressed: () {
+                          context.go('/doctor_cardiologist');
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 15),
+
+                Container(
+                  height: 25,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Text(
+                          "Top Doctors",
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayLarge!
+                              .copyWith(fontSize: 18),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          context.go('/doctor_all');
+                        },
+                        child: Text(
+                          "See all",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey[500]),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 15),
+
+                SizedBox(
+                  height: 240,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          context.go('/doctor_profile');
+                        },
+                        child: DoctorCard(
+                          doctorImageAddress:
+                              'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
+                          doctorName: 'Dr. Md Rakib',
+                          doctorRating: '4.8',
+                          doctorType: 'Surgeon',
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          context.go('/doctor_profile');
+                        },
+                        child: DoctorCard(
+                          doctorImageAddress:
+                              'https://headshots-inc.com/wp-content/uploads/2020/11/Blog-Images-1.jpg',
+                          doctorName: 'Dr. Karim Hasan',
+                          doctorRating: '4.9',
+                          doctorType: 'Therapist',
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          context.go('/doctor_profile');
+                        },
+                        child: DoctorCard(
+                          doctorImageAddress:
+                              'https://www.ianjohns.com/wp-content/uploads/2021/10/victor-surgeon-headshot.jpg',
+                          doctorName: 'Dr. Zakir Khan',
+                          doctorRating: '4.8',
+                          doctorType: 'Dentist',
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          context.go('/doctor_profile');
+                        },
+                        child: DoctorCard(
+                          doctorImageAddress:
+                              'https://images.squarespace-cdn.com/content/v1/631ba8eed2196a6795698665/ef66ba74-e5e7-452f-bc82-842d718520da/2022-08-04-KP-Lee-Jeffrey-0055.jpg',
+                          doctorName: 'Dr. Mahir Hossain',
+                          doctorRating: '4.5',
+                          doctorType: 'Nutririonist',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
+      ),
+      bottomNavigationBar: BottomAppBars(
+        value: 1,
       ),
     );
   }

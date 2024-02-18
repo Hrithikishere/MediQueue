@@ -2,7 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
 
 class BlogsCard extends StatelessWidget {
-  const BlogsCard({super.key});
+  BlogsCard(
+      {required this.title,
+      required this.doctorName,
+      required this.doctorCategory,
+      required this.postedTime,
+      super.key});
+
+  String title;
+  String doctorName;
+  String doctorCategory;
+  String postedTime;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +23,7 @@ class BlogsCard extends StatelessWidget {
           color: glassyColor, borderRadius: BorderRadius.circular(10)),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
-          "Why Men Should Stay on Top of Health Screenings",
+          title,
           style: Theme.of(context).textTheme.displayLarge!.copyWith(
                 fontSize: 18,
               ),
@@ -22,7 +32,7 @@ class BlogsCard extends StatelessWidget {
           height: 18,
         ),
         Text(
-          "Dr. Daniel Lee",
+          doctorName,
           style: Theme.of(context).textTheme.displayLarge!.copyWith(
                 fontSize: 15,
               ),
@@ -34,13 +44,13 @@ class BlogsCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Urologist",
+              doctorCategory,
               style: Theme.of(context).textTheme.displayLarge!.copyWith(
                     fontSize: 10,
                   ),
             ),
             Text(
-              "24 Jan 2024, 9.30 PM",
+              postedTime,
               style: Theme.of(context).textTheme.displayLarge!.copyWith(
                     fontSize: 10,
                   ),

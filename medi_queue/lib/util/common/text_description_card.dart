@@ -16,6 +16,8 @@ class TextDescriptionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: containerHeight,
+      width: double.infinity,
+      constraints: BoxConstraints(maxWidth: 450),
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
           color: backgroundColor ?? glassyColor,

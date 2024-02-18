@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
 
 class TopAppBar extends StatelessWidget {
-  const TopAppBar({super.key});
+  TopAppBar({required this.title, required this.onPressed, super.key});
+  String title;
+  VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +18,19 @@ class TopAppBar extends StatelessWidget {
             decoration: BoxDecoration(
                 color: glassyColor, borderRadius: BorderRadius.circular(50)),
             child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.arrow_back),
+              onPressed: onPressed,
+              icon: Icon(
+                Icons.arrow_back,
+                color: secondaryColor,
+              ),
             ),
           ),
           Container(
             padding: EdgeInsets.only(bottom: 15),
             child: Text(
-              "Blogs",
+              title,
               style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                    fontSize: 22,
+                    fontSize: 18,
                   ),
             ),
           ),
