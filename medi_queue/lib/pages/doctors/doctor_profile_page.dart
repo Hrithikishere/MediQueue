@@ -26,7 +26,7 @@ class DoctorProfilePage extends StatelessWidget {
                     context.go('/home');
                   },
                 ),
-                DoctorProfileCard(),
+                const DoctorProfileCard(),
                 //Biography
                 Padding(
                   padding: const EdgeInsets.all(10),

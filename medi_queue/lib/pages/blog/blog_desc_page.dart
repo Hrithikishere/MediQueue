@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:go_router/go_router.dart';
@@ -61,10 +62,19 @@ class BlogDescriptionPage extends StatelessWidget {
                       Flexible(
                         flex: 2,
                         child: Container(
-                          child: const CircleAvatar(
-                            radius: 25,
-                            backgroundImage: NetworkImage(
-                              'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
+                          child: ClipOval(
+                            child: CachedNetworkImage(
+                              imageUrl:
+                                  'https://images.squarespace-cdn.com/content/v1/631ba8eed2196a6795698665/e35c4b20-b80a-412f-8048-8ad57c07bd79/2022-02-10-Trinet-Kinh-5690-OneDrive+-+Social+Media.jpg',
+                              placeholder: (context, url) =>
+                                  const CircularProgressIndicator(),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
+                              maxHeightDiskCache:
+                                  100, // Set the maximum height for disk-cached images
+                              height: 65,
+                              width: 70,
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),

@@ -35,7 +35,7 @@ class BottomAppBars extends StatelessWidget {
     } else {}
 
     return Container(
-      margin: EdgeInsets.only(top: 10),
+      margin: EdgeInsets.all(20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -44,7 +44,7 @@ class BottomAppBars extends StatelessWidget {
           Container(
             height: 70,
             width: 70,
-            margin: EdgeInsets.all(15),
+            // margin: EdgeInsets.all(15),
             decoration: BoxDecoration(
                 color: homeBackColor, borderRadius: BorderRadius.circular(50)),
             child: IconButton(
@@ -62,7 +62,7 @@ class BottomAppBars extends StatelessWidget {
           Container(
             height: 65,
             width: 65,
-            margin: EdgeInsets.only(bottom: 15, left: 15),
+            // margin: EdgeInsets.only(bottom: 15, left: 15),
             decoration: BoxDecoration(
                 color: appointBackColor,
                 borderRadius: BorderRadius.circular(50)),
@@ -81,10 +81,7 @@ class BottomAppBars extends StatelessWidget {
           Container(
             height: 65,
             width: 65,
-            margin: EdgeInsets.only(
-              bottom: 15,
-              left: 15,
-            ),
+            // margin: EdgeInsets.only(bottom: 15, left: 15),
             decoration: BoxDecoration(
                 color: blogBackColor, borderRadius: BorderRadius.circular(50)),
             child: IconButton(
@@ -102,7 +99,7 @@ class BottomAppBars extends StatelessWidget {
           Container(
             height: 65,
             width: 65,
-            margin: EdgeInsets.only(bottom: 15, left: 15, right: 15),
+            // margin: EdgeInsets.only(left: 15, right: 15),
             decoration: BoxDecoration(
                 color: moreBackColor, borderRadius: BorderRadius.circular(50)),
             child: IconButton(

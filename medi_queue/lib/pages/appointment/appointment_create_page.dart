@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
@@ -38,10 +39,19 @@ class AppointmentCreatePage extends StatelessWidget {
                       Flexible(
                         flex: 2,
                         child: Container(
-                          child: const CircleAvatar(
-                            radius: 25,
-                            backgroundImage: NetworkImage(
-                              'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
+                          child: ClipOval(
+                            child: CachedNetworkImage(
+                              imageUrl:
+                                  'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
+                              placeholder: (context, url) =>
+                                  CircularProgressIndicator(),
+                              errorWidget: (context, url, error) =>
+                                  Icon(Icons.error),
+                              maxHeightDiskCache:
+                                  200, // Set the maximum height for disk-cached images
+                              height: 100,
+                              width: 100,
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
@@ -133,8 +143,11 @@ class AppointmentCreatePage extends StatelessWidget {
                 SizedBox(height: 10),
                 //select category
                 Container(
-                    color: glassyColor,
-                    height: 60,
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(10.0), // Border radius
+                        color: glassyColor),
+                    // height: 60,
                     child: DropdownButtonFormField<String>(
                       style: TextStyle(color: textLightColor),
                       decoration: const InputDecoration(

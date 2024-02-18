@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
@@ -51,15 +52,25 @@ class AppointmentDetails extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10)),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Flexible(
                           flex: 2,
                           child: Container(
-                            padding: EdgeInsets.only(bottom: 7),
-                            child: const CircleAvatar(
-                              radius: 25,
-                              backgroundImage: NetworkImage(
-                                'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
+                            padding: EdgeInsets.only(bottom: 2, top: 2),
+                            child: ClipOval(
+                              child: CachedNetworkImage(
+                                imageUrl:
+                                    'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
+                                placeholder: (context, url) =>
+                                    const CircularProgressIndicator(),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                                maxHeightDiskCache:
+                                    100, // Set the maximum height for disk-cached images
+                                height: 65,
+                                width: 70,
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),

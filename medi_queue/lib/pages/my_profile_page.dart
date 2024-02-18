@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
@@ -57,7 +58,7 @@ class MyProfilePage extends StatelessWidget {
                                             fontSize: 20,
                                             fontWeight: FontWeight.bold),
                                   ),
-                                  SizedBox(height: 10),
+                                  const SizedBox(height: 5),
                                   Text(
                                     "23 Years Old",
                                     style: Theme.of(context)
@@ -124,7 +125,7 @@ class MyProfilePage extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   //Experience
@@ -185,10 +186,19 @@ class MyProfilePage extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CircleAvatar(
-                            radius: 95,
-                            backgroundImage: NetworkImage(
-                              'https://images.squarespace-cdn.com/content/v1/631ba8eed2196a6795698665/e35c4b20-b80a-412f-8048-8ad57c07bd79/2022-02-10-Trinet-Kinh-5690-OneDrive+-+Social+Media.jpg',
+                          ClipOval(
+                            child: CachedNetworkImage(
+                              imageUrl:
+                                  'https://images.squarespace-cdn.com/content/v1/631ba8eed2196a6795698665/e35c4b20-b80a-412f-8048-8ad57c07bd79/2022-02-10-Trinet-Kinh-5690-OneDrive+-+Social+Media.jpg',
+                              placeholder: (context, url) =>
+                                  CircularProgressIndicator(),
+                              errorWidget: (context, url, error) =>
+                                  Icon(Icons.error),
+                              maxHeightDiskCache:
+                                  400, // Set the maximum height for disk-cached images
+                              height: 170,
+                              width: 170,
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ],

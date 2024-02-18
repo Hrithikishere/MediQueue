@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
 
@@ -86,10 +87,18 @@ class DoctorListItem extends StatelessWidget {
                       ],
                     ),
                   ),
-                  CircleAvatar(
-                    radius: 35,
-                    backgroundImage: NetworkImage(
-                      imageAddress,
+                  ClipOval(
+                    child: CachedNetworkImage(
+                      imageUrl: imageAddress,
+                      placeholder: (context, url) =>
+                          const CircularProgressIndicator(),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                      maxHeightDiskCache:
+                          150, // Set the maximum height for disk-cached images
+                      height: 70,
+                      width: 70,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ],

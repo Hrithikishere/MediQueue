@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
@@ -35,7 +36,7 @@ class DoctorProfileCard extends StatelessWidget {
                             .copyWith(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 5),
                       Text(
                         "Cancer Specialist",
                         style:
@@ -157,10 +158,18 @@ class DoctorProfileCard extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CircleAvatar(
-                radius: 55,
-                backgroundImage: NetworkImage(
-                  'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
+              ClipOval(
+                child: CachedNetworkImage(
+                  imageUrl:
+                      'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
+                  placeholder: (context, url) =>
+                      const CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                  maxHeightDiskCache:
+                      300, // Set the maximum height for disk-cached images
+                  height: 110,
+                  width: 110,
+                  fit: BoxFit.cover,
                 ),
               ),
               ElevatedButton(

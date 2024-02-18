@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
 
@@ -31,10 +32,16 @@ class DoctorCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //image
-              CircleAvatar(
-                radius: 40,
-                backgroundImage: NetworkImage(
-                  doctorImageAddress,
+              ClipOval(
+                child: CachedNetworkImage(
+                  imageUrl: doctorImageAddress,
+                  placeholder: (context, url) => CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  maxHeightDiskCache:
+                      150, // Set the maximum height for disk-cached images
+                  height: 80,
+                  width: 80,
+                  fit: BoxFit.cover,
                 ),
               ),
               SizedBox(height: 7),
