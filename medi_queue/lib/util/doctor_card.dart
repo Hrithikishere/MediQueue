@@ -17,10 +17,11 @@ class DoctorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(right: 10),
       child: Center(
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 20),
-          width: 200,
+          width: 180,
           decoration: BoxDecoration(
             color: glassyColor,
             borderRadius: BorderRadius.circular(7),

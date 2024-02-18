@@ -44,7 +44,7 @@ class BottomAppBars extends StatelessWidget {
           Container(
             height: 70,
             width: 70,
-            margin: EdgeInsets.only(bottom: 15, left: 15),
+            margin: EdgeInsets.all(15),
             decoration: BoxDecoration(
                 color: homeBackColor, borderRadius: BorderRadius.circular(50)),
             child: IconButton(

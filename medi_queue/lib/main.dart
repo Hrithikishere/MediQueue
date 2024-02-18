@@ -14,6 +14,8 @@ import 'package:medi_queue/pages/doctors/doctor_profile_page.dart';
 import 'package:medi_queue/pages/home_page.dart';
 import 'package:medi_queue/pages/app_intro/intro_one_page.dart';
 import 'package:medi_queue/pages/more_page.dart';
+import 'package:medi_queue/pages/doctor_profile_page.dart';
+import 'package:medi_queue/pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
