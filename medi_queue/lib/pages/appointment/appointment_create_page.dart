@@ -94,7 +94,8 @@ class AppointmentCreatePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
+                //information
                 Text(
                   "Information ",
                   textAlign: TextAlign.left,
@@ -103,13 +104,13 @@ class AppointmentCreatePage extends StatelessWidget {
                       .displayLarge!
                       .copyWith(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 TextDescriptionCard(
                     description:
                         "Information Chamber Time: Saturday to Thursday (4.00 PM to 8.00 PM) Off Day: Friday Floor Number: 4th floor Room Number: 514 Branch Name & Address: Ibn Sina Diagnostic & Consultation Center, uttara, House#52, Garib-E-Newaz Avenue, Sector#13, Uttara, Dhaka-1230",
                     containerHeight: 200),
-                SizedBox(height: 10),
-
+                const SizedBox(height: 10),
+                //date
                 Container(
                   decoration: BoxDecoration(
                       borderRadius:
@@ -141,7 +142,7 @@ class AppointmentCreatePage extends StatelessWidget {
                     },
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 //select category
                 Container(
                     decoration: BoxDecoration(
@@ -178,7 +179,8 @@ class AppointmentCreatePage extends StatelessWidget {
                       }).toList(),
                     )),
 
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
+                //problem
                 Text(
                   "Explain Problem (Briefly) ",
                   textAlign: TextAlign.left,
@@ -187,16 +189,15 @@ class AppointmentCreatePage extends StatelessWidget {
                       .displayLarge!
                       .copyWith(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-
                 Container(
                   height: 150,
-                  padding: EdgeInsets.all(10.0),
+                  padding: EdgeInsets.all(15.0),
                   decoration: BoxDecoration(
                     color: glassyColor,
-                    border: Border.all(color: Colors.grey), // Border design
+                    // border: Border.all(color: Colors.grey), // Border design
                     borderRadius: BorderRadius.circular(10.0), // Border radius
                   ),
                   child: TextField(
@@ -209,23 +210,28 @@ class AppointmentCreatePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
-                Center(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: secondaryColor,
-                    ),
-                    onPressed: () {
-                      context.go('/appointments');
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Text(
-                        "Set Apointment",
-                        style:
-                            Theme.of(context).textTheme.displayLarge!.copyWith(
-                                  fontSize: 13,
-                                ),
+                const SizedBox(height: 10),
+                Container(
+                  margin: const EdgeInsets.only(top: 10),
+                  child: Center(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: secondaryColor,
+                      ),
+                      onPressed: () {
+                        context.go('/appointments');
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text(
+                          "Set Apointment",
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayLarge!
+                              .copyWith(
+                                fontSize: 13,
+                              ),
+                        ),
                       ),
                     ),
                   ),

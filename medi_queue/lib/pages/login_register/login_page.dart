@@ -17,9 +17,9 @@ class LoginPage extends StatelessWidget {
     FocusNode nodePassword = FocusNode();
     FocusNode nodeLogin = FocusNode();
 
-    void _submitForm() {
-      if (_formKey.currentState!.validate()) {}
-    }
+    // void _submitForm() {
+    //   if (_formKey.currentState!.validate()) {}
+    // }
 
     return Scaffold(
       backgroundColor: primaryColor,
@@ -45,7 +45,7 @@ class LoginPage extends StatelessWidget {
                         width: 180,
                       ),
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     //text
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0),
@@ -70,7 +70,7 @@ class LoginPage extends StatelessWidget {
                             .copyWith(fontSize: 17, color: textLightColor),
                       ),
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
 
                     //----Form----
                     Form(
@@ -78,6 +78,7 @@ class LoginPage extends StatelessWidget {
                       child: Column(
                         //crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
+                          //input - username
                           Container(
                             margin: const EdgeInsets.only(
                                 bottom: 15.0, left: 32, right: 32),
@@ -97,6 +98,8 @@ class LoginPage extends StatelessWidget {
 
                                 // textAlignVertical: TextAlignVertical.center,
                                 decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: glassyColor,
                                   hintText: 'Enter username',
                                   hintStyle: TextStyle(color: textLightColor),
                                   border: OutlineInputBorder(
@@ -118,7 +121,7 @@ class LoginPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          //password
+                          //input - password
                           Container(
                             margin: const EdgeInsets.only(
                                 bottom: 15.0, left: 32, right: 32),
@@ -140,6 +143,8 @@ class LoginPage extends StatelessWidget {
 
                                 // textAlignVertical: TextAlignVertical.center,
                                 decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: glassyColor,
                                   hintText: 'Enter password',
                                   hintStyle: TextStyle(color: textLightColor),
                                   border: OutlineInputBorder(
@@ -160,7 +165,7 @@ class LoginPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: 15),
+                          const SizedBox(height: 15),
                           //login button
                           Container(
                             margin: const EdgeInsets.only(
@@ -214,7 +219,7 @@ class LoginPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 45),
+                    const SizedBox(height: 45),
 
                     //mediqueue text version
                     Container(
