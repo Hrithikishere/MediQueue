@@ -48,17 +48,21 @@ class DoctorCard extends StatelessWidget {
               //starts
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Icon(
                     Icons.star,
                     color: secondaryColor,
                     size: 18,
                   ),
-                  Text(
-                    " $doctorRating",
-                    style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                          fontSize: 14,
-                        ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 2.0),
+                    child: Text(
+                      " $doctorRating",
+                      style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                            fontSize: 14,
+                          ),
+                    ),
                   ),
                 ],
               ),

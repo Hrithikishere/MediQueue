@@ -15,9 +15,9 @@ class TextDescriptionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: containerHeight,
+      // height: containerHeight,
       width: double.infinity,
-      constraints: BoxConstraints(maxWidth: 450),
+      // constraints: BoxConstraints(maxWidth: 450),
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
           color: backgroundColor ?? glassyColor,

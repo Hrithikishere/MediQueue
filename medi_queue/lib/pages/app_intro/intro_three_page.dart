@@ -34,7 +34,6 @@ class IntroThreePage extends StatelessWidget {
                     ),
                     RichText(
                       text: TextSpan(
-                        text: "",
                         children: [
                           TextSpan(
                             text: "Find a Doctor",
