@@ -4,8 +4,18 @@ import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
 
 class DoctorProfileCard extends StatelessWidget {
-  const DoctorProfileCard({super.key});
-
+  DoctorProfileCard(
+      {required this.name,
+      required this.desg,
+      required this.imageAddress,
+      required this.rating,
+      required this.experience,
+      super.key});
+  String name;
+  String desg;
+  String imageAddress;
+  double rating;
+  int experience;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +38,7 @@ class DoctorProfileCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Dr. Md. Sayeedul",
+                        name,
                         softWrap: true,
                         style: Theme.of(context)
                             .textTheme
@@ -38,7 +48,7 @@ class DoctorProfileCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        "Cancer Specialist",
+                        desg,
                         style:
                             Theme.of(context).textTheme.displayLarge!.copyWith(
                                   fontSize: 14,
@@ -87,7 +97,7 @@ class DoctorProfileCard extends StatelessWidget {
                                 height: 5,
                               ),
                               Text(
-                                "4.9 From 5",
+                                "${rating} From 5",
                                 style: Theme.of(context)
                                     .textTheme
                                     .displayLarge!
@@ -136,7 +146,7 @@ class DoctorProfileCard extends StatelessWidget {
                                 height: 5,
                               ),
                               Text(
-                                "5 Years",
+                                "${experience} Years",
                                 style: Theme.of(context)
                                     .textTheme
                                     .displayLarge!
@@ -160,8 +170,7 @@ class DoctorProfileCard extends StatelessWidget {
             children: [
               ClipOval(
                 child: CachedNetworkImage(
-                  imageUrl:
-                      'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
+                  imageUrl: imageAddress,
                   placeholder: (context, url) =>
                       const CircularProgressIndicator(),
                   errorWidget: (context, url, error) => const Icon(Icons.error),

@@ -1,27 +1,23 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
+import 'package:medi_queue/framework/helpers/constants/data/doctors.dart';
 
 class DoctorCard extends StatelessWidget {
-  final String doctorImageAddress;
-  final String doctorName;
-  final String doctorRating;
-  final String doctorType;
+  final int id;
 
   const DoctorCard({
-    required this.doctorImageAddress,
-    required this.doctorName,
-    required this.doctorRating,
-    required this.doctorType,
+    required this.id,
   });
 
   @override
   Widget build(BuildContext context) {
+    Doctor doctor = doctorList.where((doctor) => doctor.id == id).first;
     return Container(
       margin: EdgeInsets.only(right: 10),
       child: Center(
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 20),
+          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
           width: 180,
           // height: 350,
           decoration: BoxDecoration(
@@ -34,7 +30,7 @@ class DoctorCard extends StatelessWidget {
               //image
               ClipOval(
                 child: CachedNetworkImage(
-                  imageUrl: doctorImageAddress,
+                  imageUrl: doctor.imageAddress,
                   placeholder: (context, url) => CircularProgressIndicator(),
                   errorWidget: (context, url, error) => Icon(Icons.error),
                   maxHeightDiskCache:
@@ -58,7 +54,7 @@ class DoctorCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 2.0),
                     child: Text(
-                      " $doctorRating",
+                      " ${doctor.rating}",
                       style: Theme.of(context).textTheme.displayLarge!.copyWith(
                             fontSize: 14,
                           ),
@@ -68,7 +64,7 @@ class DoctorCard extends StatelessWidget {
               ),
               SizedBox(height: 15),
               Text(
-                doctorName,
+                doctor.name,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.displayLarge!.copyWith(
                       fontSize: 18,
@@ -76,7 +72,7 @@ class DoctorCard extends StatelessWidget {
               ),
               SizedBox(height: 4),
               Text(
-                doctorType,
+                doctor.desg,
                 style: Theme.of(context).textTheme.displayLarge!.copyWith(
                       fontSize: 12,
                     ),
