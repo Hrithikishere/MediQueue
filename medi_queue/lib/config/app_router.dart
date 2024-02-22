@@ -111,10 +111,13 @@ final GoRouter router = GoRouter(debugLogDiagnostics: true, routes: <GoRoute>[
     },
   ),
   GoRoute(
-    path: '/doctor_profile',
+    path: '/doctor_profile/:id',
     name: 'doctor_profile',
     pageBuilder: (context, state) {
-      return MaterialPage(child: DoctorProfilePage());
+      return MaterialPage(
+          child: DoctorProfilePage(
+        id: int.parse(state.pathParameters['id']!),
+      ));
     },
   ),
   GoRoute(

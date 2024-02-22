@@ -17,7 +17,7 @@ class BlogDescriptionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // int id = 1002;
     Blogs blog = blogsList.where((blog) => blog.id == id).first;
-    print("------------------------${blog.title}");
+    // print("------------------------${blog.title}");
     // Blogs blog = blogsList.firstWhere((blog) => blog.id == id);
     // print(blog.title);
     return Scaffold(

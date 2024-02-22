@@ -35,7 +35,7 @@ class BlogsPage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
-                          print("print before sending ${blogsList[index].id}");
+                          // print("print before sending ${blogsList[index].id}");
                           context.go('/blog_desc/${blogsList[index].id}');
                         },
                         child: BlogsCard(
