@@ -25,9 +25,8 @@ class SurgeonListPage extends StatelessWidget {
       backgroundColor: primaryColor,
       body: SafeArea(
         child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
           child: Container(
-            margin: EdgeInsets.all(15),
+            margin: const EdgeInsets.all(15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -68,9 +67,9 @@ class SurgeonListPage extends StatelessWidget {
                         .copyWith(fontSize: 17),
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.68,
+                  height: MediaQuery.of(context).size.height - 240,
                   child: ListView.builder(
                     itemCount: surgeonList.length,
                     itemBuilder: (context, index) {

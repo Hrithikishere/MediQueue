@@ -12,6 +12,18 @@ class AllDoctorsListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? dropdownValue;
+    void filterList(String docDesg) {
+      List<Doctor> filteredList = [];
+      for (Doctor doctor in doctorList) {
+        if (doctor.desg == docDesg) {
+          filteredList.add(doctor);
+          // print(doctor.name);
+        }
+        // setState() {
+
+        // }
+      }
+    }
 
     return Scaffold(
       backgroundColor: primaryColor,
@@ -50,7 +62,7 @@ class AllDoctorsListPage extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Container(
                     // color: glassyColor,
                     height: 60,
@@ -71,7 +83,10 @@ class AllDoctorsListPage extends StatelessWidget {
                       ),
                       value: dropdownValue,
                       dropdownColor: primaryColor,
-                      onChanged: (String? newValue) {},
+                      onChanged: (String? newValue) {
+                        print(newValue);
+                        filterList(newValue!);
+                      },
                       items: <String>[
                         'Surgeon',
                         'Opthalmologist',
@@ -85,7 +100,7 @@ class AllDoctorsListPage extends StatelessWidget {
                       }).toList(),
                     )),
 
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Center(
                   child: Text(
                     "Find the best for you",
@@ -95,9 +110,9 @@ class AllDoctorsListPage extends StatelessWidget {
                         .copyWith(fontSize: 17),
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.6,
+                  height: MediaQuery.of(context).size.height - 250,
                   child: ListView.builder(
                     itemCount: doctorList.length,
                     itemBuilder: (context, index) {

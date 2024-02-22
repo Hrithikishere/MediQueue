@@ -21,63 +21,62 @@ class CardiologitstListPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Container(
-            margin: EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TopAppBar(
-                  title: "Cardiologist",
-                  onPressed: () {
-                    context.go('/home');
+        child: Container(
+          margin: EdgeInsets.all(15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TopAppBar(
+                title: "Cardiologist",
+                onPressed: () {
+                  context.go('/home');
+                },
+              ),
+              //search bar
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                decoration: BoxDecoration(
+                  color: glassyColor,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: TextField(
+                  style: TextStyle(color: textLightColor),
+                  decoration: InputDecoration(
+                    hintText: 'Search',
+                    hintStyle: TextStyle(color: textLightColor),
+                    suffixIcon: Icon(
+                      Icons.search,
+                      color: textLightColor,
+                    ),
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 15),
+              Center(
+                child: Text(
+                  "Find the best for you",
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayLarge!
+                      .copyWith(fontSize: 17),
+                ),
+              ),
+              const SizedBox(height: 15),
+
+              SizedBox(
+                height: MediaQuery.of(context).size.height - 240,
+                child: ListView.builder(
+                  itemCount: cardiologistList.length,
+                  itemBuilder: (context, index) {
+                    return DoctorListItem(
+                      doctor: cardiologistList[index],
+                    );
                   },
                 ),
-                //search bar
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                  decoration: BoxDecoration(
-                    color: glassyColor,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: TextField(
-                    style: TextStyle(color: textLightColor),
-                    decoration: InputDecoration(
-                      hintText: 'Search',
-                      hintStyle: TextStyle(color: textLightColor),
-                      suffixIcon: Icon(
-                        Icons.search,
-                        color: textLightColor,
-                      ),
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 15),
-                Center(
-                  child: Text(
-                    "Find the best for you",
-                    style: Theme.of(context)
-                        .textTheme
-                        .displayLarge!
-                        .copyWith(fontSize: 17),
-                  ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.68,
-                  child: ListView.builder(
-                    itemCount: cardiologistList.length,
-                    itemBuilder: (context, index) {
-                      return DoctorListItem(
-                        doctor: cardiologistList[index],
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

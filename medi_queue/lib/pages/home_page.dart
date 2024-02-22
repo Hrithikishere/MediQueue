@@ -170,8 +170,8 @@ class HomePage extends StatelessWidget {
                         child: Text(
                           "See all",
                           style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 13,
+                              // fontWeight: FontWeight.bold,
                               color: Colors.grey[500]),
                         ),
                       ),
