@@ -174,12 +174,12 @@ final GoRouter router = GoRouter(debugLogDiagnostics: true, routes: <GoRoute>[
     },
   ),
   GoRoute(
-    path: '/blog_desc',
+    path: '/blog_desc/:id',
     name: 'blog_desc',
     builder: (context, state) {
       return BlogDescriptionPage(
-          // id: state.pathParameters['id']!,
-          );
+        id: int.parse(state.pathParameters['id']!),
+      );
     },
   ),
   GoRoute(

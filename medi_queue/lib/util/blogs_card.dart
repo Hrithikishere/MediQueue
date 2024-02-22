@@ -3,12 +3,14 @@ import 'package:medi_queue/framework/helpers/constants/colors.dart';
 
 class BlogsCard extends StatelessWidget {
   BlogsCard(
-      {required this.title,
+      {required this.id,
+      required this.title,
       required this.doctorName,
       required this.doctorCategory,
       required this.postedTime,
       super.key});
 
+  int id;
   String title;
   String doctorName;
   String doctorCategory;

@@ -9,10 +9,15 @@ import 'package:medi_queue/util/common/text_description_card.dart';
 import 'package:medi_queue/util/common/topAppbar.dart';
 
 class BlogDescriptionPage extends StatelessWidget {
-  BlogDescriptionPage({super.key});
-  // String id;
+  BlogDescriptionPage({required this.id, super.key});
+
+  int id;
+
   @override
   Widget build(BuildContext context) {
+    // int id = 1002;
+    Blogs blog = blogsList.where((blog) => blog.id == id).first;
+    print("------------------------${blog.title}");
     // Blogs blog = blogsList.firstWhere((blog) => blog.id == id);
     // print(blog.title);
     return Scaffold(
@@ -34,7 +39,7 @@ class BlogDescriptionPage extends StatelessWidget {
 
                 //post title
                 Text(
-                  "Why Men Should Stay on Top of Health Screenings",
+                  blog.title,
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(
                         fontSize: 18,
                       ),
@@ -42,7 +47,7 @@ class BlogDescriptionPage extends StatelessWidget {
                 SizedBox(height: 5),
                 //post time date
                 Text(
-                  "24 Jan 2024, 9.30 PM",
+                  blog.postedTime,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(
                         fontSize: 12,
@@ -124,8 +129,7 @@ class BlogDescriptionPage extends StatelessWidget {
                 //description
                 TextDescriptionCard(
                     containerHeight: MediaQuery.of(context).size.height * 0.57,
-                    description:
-                        "The digestive system speaks a language I understand. After years of training (MBBS, FCPS, MD), I decipher its whispers to diagnose and treat liver, pancreatic, and other gut issues. At Enam Medical College & Hospital, I double down: guiding patients as a Professor and navigating their digestive journeys as a Gastroenterologist. Whether it's chronic pain, liver concerns, or gut health, every victory fuels my passion. Empowering individuals to reclaim their well-being is my mission.The digestive system speaks a language I understand. After years of training (MBBS, FCPS, MD), I decipher its whispers to diagnose and treat liver, pancreatic, and other gut issues. At Enam Medical College & Hospital, I double down: guiding patients as a Professor and navigating their digestive journeys as a Gastroenterologist. Whether it's chronic pain, liver concerns, or gut health, every victory fuels my passion. Empowering individuals to reclaim their well-being is my mission.The digestive system speaks a language I understand. After years of training (MBBS, FCPS, MD), I decipher its whispers to diagnose and treat liver, pancreatic, and other gut issues. At Enam Medical College & Hospital, I double down: guiding patients as a Professor and navigating their digestive journeys as a Gastroenterologist. Whether it's chronic pain, liver concerns, or gut health, every victory fuels my passion. Empowering individuals to reclaim their well-being is my mission."),
+                    description: blog.description),
               ],
             ),
           ),
