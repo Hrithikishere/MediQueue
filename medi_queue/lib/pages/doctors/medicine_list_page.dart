@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
+import 'package:medi_queue/framework/helpers/constants/data/doctors.dart';
 import 'package:medi_queue/util/common/bottomAppBar.dart';
 import 'package:medi_queue/util/common/topAppbar.dart';
 import 'package:medi_queue/util/doctor/doctor_list_item.dart';
@@ -10,6 +11,13 @@ class MedicineListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Doctor> medicineList = [];
+    for (Doctor doctor in doctorList) {
+      if (doctor.desg == "Medicine") {
+        medicineList.add(doctor);
+        // print(doctor.name);
+      }
+    }
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
@@ -58,51 +66,15 @@ class MedicineListPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 15),
-                InkWell(
-                  onTap: () {
-                    context.go('/doctor_profile');
-                  },
-                  child: DoctorListItem(
-                    doctorName: "Dr. Sayed Islam",
-                    doctorDesg: "Medicine",
-                    imageAddress:
-                        "https://images.squarespace-cdn.com/content/v1/51ef4493e4b0561c90fa76d6/1573492422363-K8FFCA73TJTHRXB36E54/physician+headshot.jpg?format=750w",
-                  ),
-                ),
-                SizedBox(height: 15),
-                InkWell(
-                  onTap: () {
-                    context.go('/doctor_profile');
-                  },
-                  child: DoctorListItem(
-                    doctorName: "Dr. Tasnim Rahman",
-                    doctorDesg: "Medicine",
-                    imageAddress:
-                        "https://www.obgynsilverspring.com/wp-content/uploads/sites/2/2023/08/Dr.-Chinwe-Echeazu-update-2.jpg",
-                  ),
-                ),
-                SizedBox(height: 15),
-                InkWell(
-                  onTap: () {
-                    context.go('/doctor_profile');
-                  },
-                  child: DoctorListItem(
-                    doctorName: "Dr. Tahmin Enam",
-                    doctorDesg: "Medicine",
-                    imageAddress:
-                        "https://media.istockphoto.com/id/1306584974/photo/portrait-of-a-handsome-male-nurse.jpg?s=612x612&w=0&k=20&c=1ii5X3XwTduQBfLrNnw4MVrhaRvAysP-YhaSJN12aFI=",
-                  ),
-                ),
-                SizedBox(height: 15),
-                InkWell(
-                  onTap: () {
-                    context.go('/doctor_profile');
-                  },
-                  child: DoctorListItem(
-                    doctorName: "Dr. Juthi Akter",
-                    doctorDesg: "Medicine",
-                    imageAddress:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdLV_JV1dSizElIg6vCWzaYafBlebJtk6PHN06-yA9FxLrorMO2dxxEHR3zQxANs2b0Gc&usqp=CAU",
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.68,
+                  child: ListView.builder(
+                    itemCount: medicineList.length,
+                    itemBuilder: (context, index) {
+                      return DoctorListItem(
+                        doctor: medicineList[index],
+                      );
+                    },
                   ),
                 ),
               ],

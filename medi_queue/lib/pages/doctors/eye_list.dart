@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
+import 'package:medi_queue/framework/helpers/constants/data/doctors.dart';
 import 'package:medi_queue/util/common/bottomAppBar.dart';
 import 'package:medi_queue/util/common/topAppbar.dart';
 import 'package:medi_queue/util/doctor/doctor_list_item.dart';
@@ -10,6 +11,13 @@ class EyeListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Doctor> eyeList = [];
+    for (Doctor doctor in doctorList) {
+      if (doctor.desg == "Ophthalmologist") {
+        eyeList.add(doctor);
+        // print(doctor.name);
+      }
+    }
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
@@ -58,51 +66,15 @@ class EyeListPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 15),
-                InkWell(
-                  onTap: () {
-                    context.go('/doctor_profile');
-                  },
-                  child: DoctorListItem(
-                    doctorName: "Dr. Mizan Islam",
-                    doctorDesg: "Ophthalmologist",
-                    imageAddress:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsvPunOo0a3eAs7KJWWfFsSPvHVfUtUk_llA&usqp=CAU",
-                  ),
-                ),
-                SizedBox(height: 15),
-                InkWell(
-                  onTap: () {
-                    context.go('/doctor_profile');
-                  },
-                  child: DoctorListItem(
-                    doctorName: "Dr. Sayeda Rahman",
-                    doctorDesg: "Ophthalmologist",
-                    imageAddress:
-                        "https://osh.imgix.net/nappy-waxbill/production/portraits/1841511797-Jose-Donatien.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=600&q=70&w=800&s=12f1c537d1b8c841b99c83cbecae7d5b",
-                  ),
-                ),
-                SizedBox(height: 15),
-                InkWell(
-                  onTap: () {
-                    context.go('/doctor_profile');
-                  },
-                  child: DoctorListItem(
-                    doctorName: "Dr. Mohammad Siyam",
-                    doctorDesg: "Ophthalmologist",
-                    imageAddress:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRYCmbH0qJJEsGZoDvDv8OOYm-SwGNhPZ5ng&usqp=CAU",
-                  ),
-                ),
-                SizedBox(height: 15),
-                InkWell(
-                  onTap: () {
-                    context.go('/doctor_profile');
-                  },
-                  child: DoctorListItem(
-                    doctorName: "Dr. Sumona Akter",
-                    doctorDesg: "Ophthalmologist",
-                    imageAddress:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUg7sEj954JqRY8HGUYDrz5XMD571U2w16iisLmhuyOmiDYo-Q0BaNyTITpodN8qNFrCg&usqp=CAU",
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.68,
+                  child: ListView.builder(
+                    itemCount: eyeList.length,
+                    itemBuilder: (context, index) {
+                      return DoctorListItem(
+                        doctor: eyeList[index],
+                      );
+                    },
                   ),
                 ),
               ],

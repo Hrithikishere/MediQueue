@@ -1,21 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
+import 'package:medi_queue/framework/helpers/constants/data/doctors.dart';
 
 class DoctorListItem extends StatelessWidget {
-  DoctorListItem(
-      {required this.imageAddress,
-      required this.doctorName,
-      required this.doctorDesg,
-      super.key});
-
-  String doctorName;
-  String doctorDesg;
-  String imageAddress;
+  DoctorListItem({required this.doctor, super.key});
+  Doctor doctor;
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 180,
+      margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
           color: glassyColor, borderRadius: BorderRadius.circular(10)),
       child: Column(
@@ -38,7 +34,7 @@ class DoctorListItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          doctorName,
+                          doctor.name,
                           maxLines: 2,
                           overflow: TextOverflow
                               .ellipsis, // Handle overflow gracefully
@@ -51,7 +47,7 @@ class DoctorListItem extends StatelessWidget {
                         ),
                         SizedBox(height: 1),
                         Text(
-                          doctorDesg,
+                          doctor.desg,
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
@@ -65,7 +61,7 @@ class DoctorListItem extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              "4.9",
+                              "${doctor.rating}",
                               style: Theme.of(context)
                                   .textTheme
                                   .displayLarge!
@@ -89,7 +85,7 @@ class DoctorListItem extends StatelessWidget {
                   ),
                   ClipOval(
                     child: CachedNetworkImage(
-                      imageUrl: imageAddress,
+                      imageUrl: doctor.imageAddress,
                       placeholder: (context, url) =>
                           const CircularProgressIndicator(),
                       errorWidget: (context, url, error) =>
@@ -129,7 +125,7 @@ class DoctorListItem extends StatelessWidget {
                           children: [
                             //qualifications
                             Text(
-                              "FCPS, PGT, BDS, (DDC) \n(EX)Associate Professor & Head \nSpeciality in Orthodontics & Cosmetic dentistry",
+                              doctor.qualifications,
                               maxLines: 3,
                               overflow: TextOverflow
                                   .ellipsis, // Handle overflow gracefully
@@ -151,7 +147,9 @@ class DoctorListItem extends StatelessWidget {
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(50)),
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.go('/doctor_profile/${doctor.id}');
+                      },
                       icon: Icon(Icons.arrow_forward_ios),
                     ),
                   ),

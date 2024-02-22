@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
+import 'package:medi_queue/framework/helpers/constants/data/doctors.dart';
 import 'package:medi_queue/util/appointment/appointment_card.dart';
 import 'package:medi_queue/util/category/category_card.dart';
 import 'package:medi_queue/util/common/bottomAppBar.dart';
@@ -13,6 +14,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<int> topDoctors = [1111, 1115, 1119, 1121, 1125];
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
@@ -180,59 +182,18 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 15),
 
                 SizedBox(
-                  height: 220,
-                  child: ListView(
+                  height: 250,
+                  child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    children: [
-                      InkWell(
+                    itemCount: topDoctors.length,
+                    itemBuilder: (context, index) {
+                      return InkWell(
                         onTap: () {
-                          context.go('/doctor_profile');
+                          context.go('/doctor_profile/${topDoctors[index]}');
                         },
-                        child: DoctorCard(
-                          doctorImageAddress:
-                              'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
-                          doctorName: 'Dr. Md Rakib',
-                          doctorRating: '4.8',
-                          doctorType: 'Surgeon',
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          context.go('/doctor_profile');
-                        },
-                        child: DoctorCard(
-                          doctorImageAddress:
-                              'https://headshots-inc.com/wp-content/uploads/2020/11/Blog-Images-1.jpg',
-                          doctorName: 'Dr. Karim Hasan',
-                          doctorRating: '4.9',
-                          doctorType: 'Therapist',
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          context.go('/doctor_profile');
-                        },
-                        child: DoctorCard(
-                          doctorImageAddress:
-                              'https://www.ianjohns.com/wp-content/uploads/2021/10/victor-surgeon-headshot.jpg',
-                          doctorName: 'Dr. Zakir Khan',
-                          doctorRating: '4.8',
-                          doctorType: 'Dentist',
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          context.go('/doctor_profile');
-                        },
-                        child: DoctorCard(
-                          doctorImageAddress:
-                              'https://images.squarespace-cdn.com/content/v1/631ba8eed2196a6795698665/ef66ba74-e5e7-452f-bc82-842d718520da/2022-08-04-KP-Lee-Jeffrey-0055.jpg',
-                          doctorName: 'Dr. Mahir Hossain',
-                          doctorRating: '4.5',
-                          doctorType: 'Nutririonist',
-                        ),
-                      ),
-                    ],
+                        child: DoctorCard(id: topDoctors[index]),
+                      );
+                    },
                   ),
                 ),
               ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
+import 'package:medi_queue/framework/helpers/constants/data/doctors.dart';
 import 'package:medi_queue/util/common/bottomAppBar.dart';
 import 'package:medi_queue/util/common/topAppbar.dart';
 import 'package:medi_queue/util/doctor/doctor_list_item.dart';
@@ -10,6 +11,13 @@ class CardiologitstListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Doctor> cardiologistList = [];
+    for (Doctor doctor in doctorList) {
+      if (doctor.desg == "Cardiologist") {
+        cardiologistList.add(doctor);
+        // print(doctor.name);
+      }
+    }
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
@@ -57,53 +65,15 @@ class CardiologitstListPage extends StatelessWidget {
                         .copyWith(fontSize: 17),
                   ),
                 ),
-                SizedBox(height: 15),
-                InkWell(
-                  onTap: () {
-                    context.go('/doctor_profile');
-                  },
-                  child: DoctorListItem(
-                    doctorName: "Dr. Atia Rasida Silvia",
-                    doctorDesg: "Cardiologist",
-                    imageAddress:
-                        "https://cdn.goodgallery.com/274bb1d3-b411-4b2a-bf11-30e8078d1335/s/0800/2b2j8gdj/doctor-headshot-white-lab-coat.jpg",
-                  ),
-                ),
-
-                SizedBox(height: 15),
-                InkWell(
-                  onTap: () {
-                    context.go('/doctor_profile');
-                  },
-                  child: DoctorListItem(
-                    doctorName: "Dr. Safwan Rahman",
-                    doctorDesg: "Cardiologist",
-                    imageAddress:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGnZse-bioFo_rpeu-52OVZ913euahPrdU7Q&usqp=CAU",
-                  ),
-                ),
-                SizedBox(height: 15),
-                InkWell(
-                  onTap: () {
-                    context.go('/doctor_profile');
-                  },
-                  child: DoctorListItem(
-                    doctorName: "Dr. Md. Mohaimen",
-                    doctorDesg: "Cardiologist",
-                    imageAddress:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDIRo95xp0kvpxVHenILfxivSlH_I2N4f4mA&usqp=CAU",
-                  ),
-                ),
-                SizedBox(height: 15),
-                InkWell(
-                  onTap: () {
-                    context.go('/doctor_profile');
-                  },
-                  child: DoctorListItem(
-                    doctorName: "Dr. Mohammad Himel",
-                    doctorDesg: "Cardiologist",
-                    imageAddress:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknFfj8_5xbtj-UdhvKJk8AYyb6sll3t2E7g&usqp=CAU",
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.68,
+                  child: ListView.builder(
+                    itemCount: cardiologistList.length,
+                    itemBuilder: (context, index) {
+                      return DoctorListItem(
+                        doctor: cardiologistList[index],
+                      );
+                    },
                   ),
                 ),
               ],
