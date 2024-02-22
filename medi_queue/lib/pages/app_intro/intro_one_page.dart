@@ -11,7 +11,7 @@ class IntroOnePage extends StatelessWidget {
       backgroundColor: primaryColor,
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 35, horizontal: 20),
+          padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,7 +29,7 @@ class IntroOnePage extends StatelessWidget {
                           .displayLarge!
                           .copyWith(fontSize: 14),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     RichText(
@@ -65,7 +65,7 @@ class IntroOnePage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Container(
@@ -78,6 +78,7 @@ class IntroOnePage extends StatelessWidget {
                     child: IconButton(
                       onPressed: () {
                         context.go('/intro_two');
+                        // context.go('/login_page');
                       },
                       icon: Icon(
                         Icons.arrow_forward_ios_sharp,
