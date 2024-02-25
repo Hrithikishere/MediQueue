@@ -7,6 +7,12 @@ class IntroTwoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double baseFontSize = 48.0;
+    double scaledFontSize = screenWidth / 375 * baseFontSize;
+    if (scaledFontSize > 48) {
+      scaledFontSize = 48;
+    }
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
@@ -42,15 +48,18 @@ class IntroTwoPage extends StatelessWidget {
                                 .textTheme
                                 .displayLarge!
                                 .copyWith(
-                                  fontSize: 48,
-                                ),
+                                    fontSize: scaledFontSize,
+                                    fontWeight: FontWeight.bold),
                           ),
                           TextSpan(
                             text: "\nDon't Worry! ",
                             style: Theme.of(context)
                                 .textTheme
                                 .displayLarge!
-                                .copyWith(fontSize: 48, color: secondaryColor),
+                                .copyWith(
+                                    fontSize: scaledFontSize,
+                                    color: secondaryColor,
+                                    fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -59,13 +68,23 @@ class IntroTwoPage extends StatelessWidget {
                 ),
               ),
               //image
-              Center(child: Image.asset("assets/icons/intro-two-logo.png")),
+              Center(
+                  child: Container(
+                      height: MediaQuery.of(context).size.height * 0.35,
+                      width: MediaQuery.of(context).size.height - 240,
+                      child: Image.asset("assets/icons/intro-two-logo.png"))),
               //next button
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
-                    width: 5,
+                  TextButton(
+                    onPressed: () {
+                      context.go('/intro_one');
+                    },
+                    child: Text(
+                      "Back",
+                      selectionColor: secondaryColor,
+                    ),
                   ),
                   Container(
                     height: 70,

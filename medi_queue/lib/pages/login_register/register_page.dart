@@ -40,10 +40,8 @@ class RegisterPage extends StatelessWidget {
                 Text(
                   "Create\nAccount",
                   textAlign: TextAlign.left,
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayLarge!
-                      .copyWith(fontSize: 34),
+                  style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                      fontSize: 34, fontWeight: FontWeight.bold, height: 1.2),
                 ),
 
                 const SizedBox(height: 15),

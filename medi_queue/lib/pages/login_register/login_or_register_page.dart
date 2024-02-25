@@ -30,9 +30,7 @@ class LoginOrRegisterPage extends StatelessWidget {
                             .displayLarge!
                             .copyWith(fontSize: 14),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      const SizedBox(height: 10),
                       //big text
                       RichText(
                         text: TextSpan(
@@ -44,8 +42,9 @@ class LoginOrRegisterPage extends StatelessWidget {
                                   .textTheme
                                   .displayLarge!
                                   .copyWith(
-                                    fontSize: 48,
-                                  ),
+                                      fontSize: 48,
+                                      height: 1.2,
+                                      fontWeight: FontWeight.bold),
                             ),
                             TextSpan(
                               text: "Mediqueue!",
@@ -53,7 +52,10 @@ class LoginOrRegisterPage extends StatelessWidget {
                                   .textTheme
                                   .displayLarge!
                                   .copyWith(
-                                      fontSize: 48, color: secondaryColor),
+                                      fontSize: 48,
+                                      color: secondaryColor,
+                                      height: 1.2,
+                                      fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),

@@ -63,7 +63,7 @@ class MedicineListPage extends StatelessWidget {
                       .copyWith(fontSize: 17),
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               SizedBox(
                 height: MediaQuery.of(context).size.height - 240,
                 child: ListView.builder(

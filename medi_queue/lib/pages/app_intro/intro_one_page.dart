@@ -7,6 +7,12 @@ class IntroOnePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double baseFontSize = 48.0;
+    double scaledFontSize = screenWidth / 375 * baseFontSize;
+    if (scaledFontSize > 48) {
+      scaledFontSize = 48;
+    }
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
@@ -33,41 +39,58 @@ class IntroOnePage extends StatelessWidget {
                       height: 10,
                     ),
                     RichText(
-                        text: TextSpan(text: "", children: [
-                      TextSpan(
-                        text: "Your ",
-                        style:
-                            Theme.of(context).textTheme.displayLarge!.copyWith(
-                                  fontSize: 48,
-                                ),
-                      ),
-                      TextSpan(
-                        text: "Health ",
-                        style: Theme.of(context)
-                            .textTheme
-                            .displayLarge!
-                            .copyWith(fontSize: 48, color: secondaryColor),
-                      ),
-                      TextSpan(
-                        text: "Journey, Just Got Easier.",
-                        style: Theme.of(context)
-                            .textTheme
-                            .displayLarge!
-                            .copyWith(fontSize: 48),
-                      ),
-                    ])),
+                        text: TextSpan(
+                            text: "",
+                            style: TextStyle(height: 1.2),
+                            children: [
+                          TextSpan(
+                            text: "Your ",
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayLarge!
+                                .copyWith(
+                                    fontSize: scaledFontSize,
+                                    height: 1.2,
+                                    fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(
+                            text: "Health ",
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayLarge!
+                                .copyWith(
+                                    fontSize: scaledFontSize,
+                                    color: secondaryColor,
+                                    height: 1,
+                                    fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(
+                            text: "Journey, Just Got Easier.",
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayLarge!
+                                .copyWith(
+                                    fontSize: scaledFontSize,
+                                    height: 1.5,
+                                    fontWeight: FontWeight.bold),
+                          ),
+                        ])),
                   ],
                 ),
               ),
               //image
-              Center(child: Image.asset("assets/icons/intro-one-logo.png")),
+              Center(
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.35,
+                  width: MediaQuery.of(context).size.height - 240,
+                  child: Image.asset("assets/icons/intro-one-logo.png"),
+                ),
+              ),
               //next button
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const SizedBox(
-                    width: 5,
-                  ),
+                  SizedBox(width: 5),
                   Container(
                     height: 70,
                     width: 100,

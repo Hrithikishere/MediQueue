@@ -7,6 +7,12 @@ class IntroFourPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double baseFontSize = 48.0;
+    double scaledFontSize = screenWidth / 375 * baseFontSize;
+    if (scaledFontSize > 48) {
+      scaledFontSize = 48;
+    }
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
@@ -29,9 +35,7 @@ class IntroFourPage extends StatelessWidget {
                           .displayLarge!
                           .copyWith(fontSize: 14),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
                     RichText(
                       text: TextSpan(
                         text: "",
@@ -42,15 +46,20 @@ class IntroFourPage extends StatelessWidget {
                                 .textTheme
                                 .displayLarge!
                                 .copyWith(
-                                  fontSize: 48,
-                                ),
+                                    fontSize: 48,
+                                    height: 1.2,
+                                    fontWeight: FontWeight.bold),
                           ),
                           TextSpan(
                             text: "\nIt's That Simple!",
                             style: Theme.of(context)
                                 .textTheme
                                 .displayLarge!
-                                .copyWith(fontSize: 48, color: secondaryColor),
+                                .copyWith(
+                                    fontSize: 48,
+                                    color: secondaryColor,
+                                    height: 1.2,
+                                    fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -59,13 +68,23 @@ class IntroFourPage extends StatelessWidget {
                 ),
               ),
               //image
-              Center(child: Image.asset("assets/icons/intro-four-logo.png")),
+              Center(
+                  child: Container(
+                      height: MediaQuery.of(context).size.height * 0.35,
+                      width: MediaQuery.of(context).size.height - 240,
+                      child: Image.asset("assets/icons/intro-four-logo.png"))),
               //next button
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
-                    width: 5,
+                  TextButton(
+                    onPressed: () {
+                      context.go('/intro_three');
+                    },
+                    child: Text(
+                      "Back",
+                      selectionColor: secondaryColor,
+                    ),
                   ),
                   Container(
                     height: 70,
