@@ -64,8 +64,8 @@ class EyeListPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 15),
-              SizedBox(
-                height: MediaQuery.of(context).size.height - 240,
+              Flexible(
+                flex: 5,
                 child: ListView.builder(
                   itemCount: eyeList.length,
                   itemBuilder: (context, index) {

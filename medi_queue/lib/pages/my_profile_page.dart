@@ -73,7 +73,7 @@ class MyProfilePage extends StatelessWidget {
                               ),
                             ),
 
-                            //Experience and Ratings
+                            //Weight and Height
                             Container(
                               child: Column(
                                 children: [
@@ -195,7 +195,7 @@ class MyProfilePage extends StatelessWidget {
                               errorWidget: (context, url, error) =>
                                   Icon(Icons.error),
                               maxHeightDiskCache:
-                                  400, // Set the maximum height for disk-cached images
+                                  300, // Set the maximum height for disk-cached images
                               height: 170,
                               width: 170,
                               fit: BoxFit.cover,

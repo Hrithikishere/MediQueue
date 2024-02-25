@@ -28,102 +28,99 @@ class AllDoctorsListPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TopAppBar(
-                  title: "All Doctors",
-                  onPressed: () {
-                    context.go('/home');
-                  },
+        child: Container(
+          margin: EdgeInsets.all(15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TopAppBar(
+                title: "All Doctors",
+                onPressed: () {
+                  context.go('/home');
+                },
+              ),
+              //search bar
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                decoration: BoxDecoration(
+                  color: glassyColor,
+                  borderRadius: BorderRadius.circular(12),
                 ),
-                //search bar
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                  decoration: BoxDecoration(
-                    color: glassyColor,
-                    borderRadius: BorderRadius.circular(12),
+                child: TextField(
+                  style: TextStyle(color: textLightColor),
+                  decoration: InputDecoration(
+                    hintText: 'Search',
+                    hintStyle: TextStyle(color: textLightColor),
+                    suffixIcon: Icon(
+                      Icons.search,
+                      color: textLightColor,
+                    ),
+                    border: InputBorder.none,
                   ),
-                  child: TextField(
+                ),
+              ),
+
+              const SizedBox(height: 15),
+              Container(
+                  // color: glassyColor,
+                  height: 60,
+                  child: DropdownButtonFormField<String>(
                     style: TextStyle(color: textLightColor),
                     decoration: InputDecoration(
-                      hintText: 'Search',
-                      hintStyle: TextStyle(color: textLightColor),
-                      suffixIcon: Icon(
-                        Icons.search,
-                        color: textLightColor,
-                      ),
-                      border: InputBorder.none,
+                      border: OutlineInputBorder(),
+                      fillColor: glassyColor,
+                      filled: true,
                     ),
-                  ),
-                ),
-
-                const SizedBox(height: 15),
-                Container(
-                    // color: glassyColor,
-                    height: 60,
-                    child: DropdownButtonFormField<String>(
-                      style: TextStyle(color: textLightColor),
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        fillColor: glassyColor,
-                        filled: true,
-                      ),
-                      hint: Text(
-                        "Select Category",
-                        textAlign: TextAlign.center,
-                        style:
-                            Theme.of(context).textTheme.displayLarge!.copyWith(
-                                  fontSize: 15,
-                                ),
-                      ),
-                      value: dropdownValue,
-                      dropdownColor: primaryColor,
-                      onChanged: (String? newValue) {
-                        print(newValue);
-                        filterList(newValue!);
-                      },
-                      items: <String>[
-                        'Surgeon',
-                        'Opthalmologist',
-                        'Medicine',
-                        'Cardiologist'
-                      ].map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                    )),
-
-                const SizedBox(height: 15),
-                Center(
-                  child: Text(
-                    "Find the best for you",
-                    style: Theme.of(context)
-                        .textTheme
-                        .displayLarge!
-                        .copyWith(fontSize: 17),
-                  ),
-                ),
-                const SizedBox(height: 15),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height - 250,
-                  child: ListView.builder(
-                    itemCount: doctorList.length,
-                    itemBuilder: (context, index) {
-                      return DoctorListItem(
-                        doctor: doctorList[index],
-                      );
+                    hint: Text(
+                      "Select Category",
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                            fontSize: 15,
+                          ),
+                    ),
+                    value: dropdownValue,
+                    dropdownColor: primaryColor,
+                    onChanged: (String? newValue) {
+                      print(newValue);
+                      filterList(newValue!);
                     },
-                  ),
+                    items: <String>[
+                      'Surgeon',
+                      'Opthalmologist',
+                      'Medicine',
+                      'Cardiologist'
+                    ].map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  )),
+
+              const SizedBox(height: 15),
+              Center(
+                child: Text(
+                  "Find the best for you",
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayLarge!
+                      .copyWith(fontSize: 17),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(height: 15),
+              Flexible(
+                // flex: 6,
+                child: ListView.builder(
+                  itemCount: doctorList.length,
+                  itemBuilder: (context, index) {
+                    return DoctorListItem(
+                      doctor: doctorList[index],
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ),

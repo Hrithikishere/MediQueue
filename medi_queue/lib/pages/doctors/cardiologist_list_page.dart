@@ -65,8 +65,8 @@ class CardiologitstListPage extends StatelessWidget {
               ),
               const SizedBox(height: 15),
 
-              SizedBox(
-                height: MediaQuery.of(context).size.height - 240,
+              Flexible(
+                flex: 5,
                 child: ListView.builder(
                   itemCount: cardiologistList.length,
                   itemBuilder: (context, index) {

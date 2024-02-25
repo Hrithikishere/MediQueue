@@ -24,7 +24,7 @@ class AppointmentCreatePage extends StatelessWidget {
                 TopAppBar(
                     title: "Create Appointment",
                     onPressed: () {
-                      context.go('/doctor_profile');
+                      context.go('/home');
                     }),
                 //doctor card
                 Container(

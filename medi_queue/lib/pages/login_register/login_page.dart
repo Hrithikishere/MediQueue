@@ -22,6 +22,8 @@ class _LoginPageState extends State<LoginPage> {
     FocusNode nodePassword = FocusNode();
     FocusNode nodeLogin = FocusNode();
 
+    bool loading;
+    loading = false;
     // void _submitForm() {
     //   if (_formKey.currentState!.validate()) {}
     // }
@@ -172,22 +174,27 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             focusNode: nodeLogin,
                             // maximumSize: Size(150.0, 25.0),
-                            child: Text('Login',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleSmall!
-                                    .copyWith(
-                                        color: textLightColor,
-                                        fontWeight: FontWeight.normal,
-                                        fontSize: 15.5)),
+                            child: loading
+                                ? CircularProgressIndicator()
+                                : Text('Login',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall!
+                                        .copyWith(
+                                            color: textLightColor,
+                                            fontWeight: FontWeight.normal,
+                                            fontSize: 15.5)),
                             onPressed: () {
                               // _submitForm();
                               if (_formKey.currentState!.validate()) {
                                 if (_password.text == "password" &&
                                     _username.text == "admin") {
-                                  _username.clear();
-                                  _password.clear();
-                                  context.go('/home');
+                                  loading = true;
+                                  Future.delayed(Duration(seconds: 2), () {
+                                    _username.clear();
+                                    _password.clear();
+                                    context.go('/home');
+                                  });
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
