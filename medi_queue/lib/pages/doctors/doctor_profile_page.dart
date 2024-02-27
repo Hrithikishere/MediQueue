@@ -30,11 +30,7 @@ class DoctorProfilePage extends StatelessWidget {
                   },
                 ),
                 DoctorProfileCard(
-                  name: doctor.name,
-                  desg: doctor.desg,
-                  imageAddress: doctor.imageAddress,
-                  rating: doctor.rating,
-                  experience: doctor.experienceLevel,
+                  id: id,
                 ),
                 //Biography
                 Padding(

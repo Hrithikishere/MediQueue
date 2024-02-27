@@ -2,22 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
+import 'package:medi_queue/framework/helpers/constants/data/doctors.dart';
 
 class DoctorProfileCard extends StatelessWidget {
-  DoctorProfileCard(
-      {required this.name,
-      required this.desg,
-      required this.imageAddress,
-      required this.rating,
-      required this.experience,
-      super.key});
-  String name;
-  String desg;
-  String imageAddress;
-  double rating;
-  int experience;
+  DoctorProfileCard({required this.id, super.key});
+  int id;
   @override
   Widget build(BuildContext context) {
+    Doctor doctor = doctorList.where((doctor) => doctor.id == id).first;
     return Container(
       padding: EdgeInsets.all(15),
       height: 220,
@@ -38,7 +30,7 @@ class DoctorProfileCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        name,
+                        doctor.name,
                         softWrap: true,
                         style: Theme.of(context)
                             .textTheme
@@ -48,7 +40,7 @@ class DoctorProfileCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        desg,
+                        doctor.desg,
                         style:
                             Theme.of(context).textTheme.displayLarge!.copyWith(
                                   fontSize: 14,
@@ -97,7 +89,7 @@ class DoctorProfileCard extends StatelessWidget {
                                 height: 5,
                               ),
                               Text(
-                                "${rating} From 5",
+                                "${doctor.rating} From 5",
                                 style: Theme.of(context)
                                     .textTheme
                                     .displayLarge!
@@ -146,7 +138,7 @@ class DoctorProfileCard extends StatelessWidget {
                                 height: 5,
                               ),
                               Text(
-                                "${experience} Years",
+                                "${doctor.experienceLevel} Years",
                                 style: Theme.of(context)
                                     .textTheme
                                     .displayLarge!
@@ -170,7 +162,7 @@ class DoctorProfileCard extends StatelessWidget {
             children: [
               ClipOval(
                 child: CachedNetworkImage(
-                  imageUrl: imageAddress,
+                  imageUrl: doctor.imageAddress,
                   placeholder: (context, url) =>
                       const CircularProgressIndicator(),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
@@ -185,7 +177,7 @@ class DoctorProfileCard extends StatelessWidget {
                 style:
                     ElevatedButton.styleFrom(backgroundColor: secondaryColor),
                 onPressed: () {
-                  context.go('/appointment_create');
+                  context.go('/appointment_create/${doctor.id}');
                 },
                 child: Text(
                   "Appointment",

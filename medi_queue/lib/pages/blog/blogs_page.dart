@@ -41,8 +41,7 @@ class BlogsPage extends StatelessWidget {
                         child: BlogsCard(
                           id: blogsList[index].id,
                           title: blogsList[index].title,
-                          doctorName: blogsList[index].postedBy,
-                          doctorCategory: blogsList[index].postedByDesg,
+                          doctorId: blogsList[index].postedBy,
                           postedTime: blogsList[index].postedTime,
                         ),
                       );

@@ -170,10 +170,13 @@ final GoRouter router = GoRouter(debugLogDiagnostics: true, routes: <GoRoute>[
     },
   ),
   GoRoute(
-    path: '/appointment_create',
+    path: '/appointment_create/:id',
     name: 'appointment_create',
     pageBuilder: (context, state) {
-      return MaterialPage(child: AppointmentCreatePage());
+      return MaterialPage(
+          child: AppointmentCreatePage(
+        id: int.parse(state.pathParameters['id']!),
+      ));
     },
   ),
   GoRoute(

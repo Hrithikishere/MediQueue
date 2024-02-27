@@ -42,15 +42,20 @@ class AboutPage extends StatelessWidget {
                               .textTheme
                               .displayLarge!
                               .copyWith(
-                                fontSize: 34,
-                              ),
+                                  fontSize: 34,
+                                  height: 1.2,
+                                  fontWeight: FontWeight.bold),
                         ),
                         TextSpan(
                           text: "\nMediqueue ",
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
-                              .copyWith(fontSize: 34, color: secondaryColor),
+                              .copyWith(
+                                  fontSize: 34,
+                                  color: secondaryColor,
+                                  height: 1.2,
+                                  fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),

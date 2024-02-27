@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
+import 'package:medi_queue/framework/helpers/constants/data/doctors.dart';
 
 class BlogsCard extends StatelessWidget {
   BlogsCard(
       {required this.id,
       required this.title,
-      required this.doctorName,
-      required this.doctorCategory,
+      required this.doctorId,
       required this.postedTime,
       super.key});
 
   int id;
   String title;
-  String doctorName;
-  String doctorCategory;
+  int doctorId;
   String postedTime;
 
   @override
   Widget build(BuildContext context) {
+    Doctor doctor = doctorList.where((doctor) => doctor.id == doctorId).first;
+
     return Container(
       padding: EdgeInsets.all(20),
       margin: EdgeInsets.only(bottom: 15),
@@ -34,7 +35,7 @@ class BlogsCard extends StatelessWidget {
           height: 18,
         ),
         Text(
-          doctorName,
+          doctor.name,
           style: Theme.of(context).textTheme.displayLarge!.copyWith(
                 fontSize: 15,
               ),
@@ -46,7 +47,7 @@ class BlogsCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              doctorCategory,
+              doctor.desg,
               style: Theme.of(context).textTheme.displayLarge!.copyWith(
                     fontSize: 10,
                   ),
