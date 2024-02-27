@@ -47,7 +47,7 @@ class BlogDescriptionPage extends StatelessWidget {
                         fontSize: 18,
                       ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 //post time date
                 Text(
                   blog.postedTime,
@@ -56,34 +56,30 @@ class BlogDescriptionPage extends StatelessWidget {
                         fontSize: 12,
                       ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 //doctor card
                 Container(
                   height: 100,
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
                       color: glassyColor,
                       borderRadius: BorderRadius.circular(10)),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Flexible(
-                        flex: 2,
-                        child: Container(
-                          child: ClipOval(
-                            child: CachedNetworkImage(
-                              imageUrl: doctor.imageAddress,
-                              placeholder: (context, url) =>
-                                  const CircularProgressIndicator(),
-                              errorWidget: (context, url, error) =>
-                                  const Icon(Icons.error),
-                              maxHeightDiskCache:
-                                  100, // Set the maximum height for disk-cached images
-                              height: 65,
-                              width: 70,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+                      ClipOval(
+                        child: CachedNetworkImage(
+                          imageUrl: doctor.imageAddress,
+                          placeholder: (context, url) =>
+                              const CircularProgressIndicator(),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                          maxHeightDiskCache:
+                              100, // Set the maximum height for disk-cached images
+                          height: 65,
+                          width: 65,
+                          fit: BoxFit.cover,
                         ),
                       ),
                       //doctor name category
@@ -91,40 +87,35 @@ class BlogDescriptionPage extends StatelessWidget {
                         onTap: () {
                           context.go('/doctor_profile/${blog.postedBy}');
                         },
-                        child: Flexible(
-                          flex: 8,
-                          child: Container(
-                            padding: EdgeInsets.only(left: 10, top: 10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  doctor.name,
-                                  maxLines: 2,
-                                  overflow: TextOverflow
-                                      .ellipsis, // Handle overflow gracefully
-                                  softWrap: true,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .displayLarge!
-                                      .copyWith(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(
-                                  height: 3,
-                                ),
-                                Text(
-                                  doctor.desg,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .displayLarge!
-                                      .copyWith(
-                                        fontSize: 13,
-                                      ),
-                                ),
-                              ],
-                            ),
+                        child: Container(
+                          padding: const EdgeInsets.only(left: 10, top: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                doctor.name,
+                                maxLines: 2,
+                                overflow: TextOverflow
+                                    .ellipsis, // Handle overflow gracefully
+                                softWrap: true,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displayLarge!
+                                    .copyWith(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 3),
+                              Text(
+                                doctor.desg,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displayLarge!
+                                    .copyWith(
+                                      fontSize: 13,
+                                    ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

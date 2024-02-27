@@ -54,59 +54,50 @@ class AppointmentDetails extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Flexible(
-                          flex: 2,
-                          child: Container(
-                            padding: EdgeInsets.only(bottom: 2, top: 2),
-                            child: ClipOval(
-                              child: CachedNetworkImage(
-                                imageUrl:
-                                    'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
-                                placeholder: (context, url) =>
-                                    const CircularProgressIndicator(),
-                                errorWidget: (context, url, error) =>
-                                    const Icon(Icons.error),
-                                maxHeightDiskCache:
-                                    100, // Set the maximum height for disk-cached images
-                                height: 65,
-                                width: 70,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                        ClipOval(
+                          child: CachedNetworkImage(
+                            imageUrl:
+                                'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
+                            placeholder: (context, url) =>
+                                const CircularProgressIndicator(),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
+                            maxHeightDiskCache:
+                                100, // Set the maximum height for disk-cached images
+                            height: 65,
+                            width: 65,
+                            fit: BoxFit.cover,
                           ),
                         ),
                         //doctor name category rating
-                        Flexible(
-                          flex: 8,
-                          child: Container(
-                            padding: EdgeInsets.only(left: 10, top: 10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Dr. Md. Sayeedul Islam",
-                                  maxLines: 2,
-                                  overflow: TextOverflow
-                                      .ellipsis, // Handle overflow gracefully
-                                  softWrap: true,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .displayLarge!
-                                      .copyWith(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  "Dentist",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .displayLarge!
-                                      .copyWith(
-                                        fontSize: 13,
-                                      ),
-                                ),
-                              ],
-                            ),
+                        Container(
+                          padding: const EdgeInsets.only(left: 10, top: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Dr. Md. Sayeedul Islam",
+                                maxLines: 2,
+                                overflow: TextOverflow
+                                    .ellipsis, // Handle overflow gracefully
+                                softWrap: true,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displayLarge!
+                                    .copyWith(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                "Dentist",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displayLarge!
+                                    .copyWith(
+                                      fontSize: 13,
+                                    ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
