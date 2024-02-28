@@ -62,7 +62,6 @@ List<Doctor> doctorList = [
     4.9,
   ),
   //---surgeon
-
   Doctor(
     1114,
     "Dr. Mahir Hossain",

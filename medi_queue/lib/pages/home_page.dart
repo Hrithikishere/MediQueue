@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          context.go('/my_profile');
+                          context.push('/my_profile');
                         },
                         child: Container(
                           padding: const EdgeInsets.all(12),
@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget {
                 //card
                 InkWell(
                     onTap: () {
-                      context.go('/appointment_details');
+                      context.push('/appointment_details');
                     },
                     child: NextAppointmentCard()),
                 const SizedBox(height: 15),
@@ -118,28 +118,28 @@ class HomePage extends StatelessWidget {
                         cardName: "Surgeon",
                         iconData: Icons.masks_sharp,
                         onPressed: () {
-                          context.go('/doctor_surgeon');
+                          context.push('/doctor_surgeon');
                         },
                       ),
                       CategoryCard(
                         iconData: Icons.remove_red_eye_outlined,
                         cardName: "Ophthalmologist",
                         onPressed: () {
-                          context.go('/doctor_ophthalmologist');
+                          context.push('/doctor_ophthalmologist');
                         },
                       ),
                       CategoryCard(
                         cardName: "Medicine",
                         iconData: Icons.medical_services_outlined,
                         onPressed: () {
-                          context.go('/doctor_medicine');
+                          context.push('/doctor_medicine');
                         },
                       ),
                       CategoryCard(
                         cardName: "Cardioloigst",
                         iconData: Icons.airline_seat_legroom_reduced_rounded,
                         onPressed: () {
-                          context.go('/doctor_cardiologist');
+                          context.push('/doctor_cardiologist');
                         },
                       ),
                     ],
@@ -165,7 +165,7 @@ class HomePage extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {
-                          context.go('/doctor_all');
+                          context.push('/doctor_all');
                         },
                         child: Text(
                           "See all",
@@ -189,7 +189,7 @@ class HomePage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
-                          context.go('/doctor_profile/${topDoctors[index]}');
+                          context.push('/doctor_profile/${topDoctors[index]}');
                         },
                         child: DoctorCard(id: topDoctors[index]),
                       );

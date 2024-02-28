@@ -28,7 +28,7 @@ class AboutPage extends StatelessWidget {
                   TopAppBar(
                     title: "About Us",
                     onPressed: () {
-                      context.go('/more');
+                      context.pop();
                     },
                   ),
                   //about mediqueue

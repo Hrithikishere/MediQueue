@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medi_queue/config/app_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medi_queue/framework/helpers/constants/data/blogs.dart';
 import 'package:medi_queue/pages/app_intro/intro_four_page.dart';

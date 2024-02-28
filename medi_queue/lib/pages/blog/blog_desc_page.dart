@@ -36,7 +36,7 @@ class BlogDescriptionPage extends StatelessWidget {
                 TopAppBar(
                   title: "Blogs",
                   onPressed: () {
-                    context.go('/blogs');
+                    context.pop();
                   },
                 ),
 
@@ -85,7 +85,7 @@ class BlogDescriptionPage extends StatelessWidget {
                       //doctor name category
                       InkWell(
                         onTap: () {
-                          context.go('/doctor_profile/${blog.postedBy}');
+                          context.push('/doctor_profile/${blog.postedBy}');
                         },
                         child: Container(
                           padding: const EdgeInsets.only(left: 10, top: 10),

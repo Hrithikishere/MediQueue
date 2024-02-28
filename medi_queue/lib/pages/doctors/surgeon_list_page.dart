@@ -32,7 +32,7 @@ class SurgeonListPage extends StatelessWidget {
               TopAppBar(
                 title: "Surgeon",
                 onPressed: () {
-                  context.go('/home');
+                  context.pop();
                 },
               ),
               //search bar

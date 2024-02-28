@@ -148,7 +148,7 @@ class DoctorListItem extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50)),
                     child: IconButton(
                       onPressed: () {
-                        context.go('/doctor_profile/${doctor.id}');
+                        context.push('/doctor_profile/${doctor.id}');
                       },
                       icon: Icon(Icons.arrow_forward_ios),
                     ),

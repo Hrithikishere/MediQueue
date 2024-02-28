@@ -29,7 +29,7 @@ class MedicineListPage extends StatelessWidget {
               TopAppBar(
                 title: "Medicine",
                 onPressed: () {
-                  context.go('/home');
+                  context.pop();
                 },
               ),
               //search bar

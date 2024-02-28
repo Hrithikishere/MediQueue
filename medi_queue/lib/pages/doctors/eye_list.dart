@@ -29,7 +29,7 @@ class EyeListPage extends StatelessWidget {
               TopAppBar(
                 title: "Ophthalmologist",
                 onPressed: () {
-                  context.go('/home');
+                  context.pop();
                 },
               ),
               //search bar

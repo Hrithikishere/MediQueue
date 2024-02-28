@@ -195,7 +195,11 @@ class _LoginPageState extends State<LoginPage> {
                                     _password.clear();
                                     context.go('/home');
                                   });
-                                } else {
+                                }
+                                // else if(){
+
+                                // }
+                                else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Container(

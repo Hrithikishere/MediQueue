@@ -26,7 +26,7 @@ class DoctorProfilePage extends StatelessWidget {
                 TopAppBar(
                   title: "Doctor Profile",
                   onPressed: () {
-                    context.go('/home');
+                    context.pop(context);
                   },
                 ),
                 DoctorProfileCard(

@@ -29,7 +29,7 @@ class CardiologitstListPage extends StatelessWidget {
               TopAppBar(
                 title: "Cardiologist",
                 onPressed: () {
-                  context.go('/home');
+                  context.pop();
                 },
               ),
               //search bar

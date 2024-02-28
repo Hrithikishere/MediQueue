@@ -177,7 +177,7 @@ class DoctorProfileCard extends StatelessWidget {
                 style:
                     ElevatedButton.styleFrom(backgroundColor: secondaryColor),
                 onPressed: () {
-                  context.go('/appointment_create/${doctor.id}');
+                  context.push('/appointment_create/${doctor.id}');
                 },
                 child: Text(
                   "Appointment",

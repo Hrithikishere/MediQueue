@@ -80,7 +80,7 @@ class IntroThreePage extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () {
-                      context.go('/intro_two');
+                      context.push('/intro_two');
                     },
                     child: Text(
                       "Back",
@@ -96,7 +96,7 @@ class IntroThreePage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(35)),
                     child: IconButton(
                       onPressed: () {
-                        context.go('/intro_four');
+                        context.push('/intro_four');
                       },
                       icon: Icon(
                         Icons.arrow_forward_ios_sharp,

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
 
 class TopAppBar extends StatelessWidget {
-  TopAppBar({required this.title, required this.onPressed, super.key});
+  TopAppBar({required this.title, this.onPressed, super.key});
   String title;
-  VoidCallback onPressed;
+  VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,10 @@ class TopAppBar extends StatelessWidget {
             decoration: BoxDecoration(
                 color: glassyColor, borderRadius: BorderRadius.circular(50)),
             child: IconButton(
-              onPressed: onPressed,
+              onPressed: onPressed ??
+                  () {
+                    context.pop();
+                  },
               icon: Icon(
                 Icons.arrow_back,
                 color: secondaryColor,

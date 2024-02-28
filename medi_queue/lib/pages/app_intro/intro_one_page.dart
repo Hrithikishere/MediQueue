@@ -100,8 +100,8 @@ class IntroOnePage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(35)),
                     child: IconButton(
                       onPressed: () {
-                        context.go('/intro_two');
-                        // context.go('/login_page');
+                        context.push('/intro_two');
+                        // context.push('/login_page');
                       },
                       icon: Icon(
                         Icons.arrow_forward_ios_sharp,

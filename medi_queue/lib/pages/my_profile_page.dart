@@ -24,7 +24,7 @@ class MyProfilePage extends StatelessWidget {
                 TopAppBar(
                   title: "Profile",
                   onPressed: () {
-                    context.go('/home');
+                    context.pop();
                   },
                 ),
                 //profile card

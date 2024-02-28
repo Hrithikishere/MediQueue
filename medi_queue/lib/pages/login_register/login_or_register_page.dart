@@ -79,7 +79,7 @@ class LoginOrRegisterPage extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            context.go('/register');
+                            context.push('/register');
                           },
                           child: Text(
                             "Create new account?",
@@ -94,7 +94,7 @@ class LoginOrRegisterPage extends StatelessWidget {
                       //login text
                       InkWell(
                         onTap: () {
-                          context.go('/login_page');
+                          context.push('/login_page');
                         },
                         child: RichText(
                           text: TextSpan(

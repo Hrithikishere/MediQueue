@@ -79,7 +79,7 @@ class IntroFourPage extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () {
-                      context.go('/intro_three');
+                      context.push('/intro_three');
                     },
                     child: Text(
                       "Back",
@@ -95,7 +95,7 @@ class IntroFourPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(35)),
                     child: IconButton(
                       onPressed: () {
-                        context.go('/login_or_register');
+                        context.push('/login_or_register');
                       },
                       icon: Icon(
                         Icons.arrow_forward_ios_sharp,

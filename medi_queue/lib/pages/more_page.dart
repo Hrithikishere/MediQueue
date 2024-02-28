@@ -22,32 +22,32 @@ class MorePage extends StatelessWidget {
                 TopAppBar(
                   title: "More",
                   onPressed: () {
-                    context.go('/home');
+                    context.pop();
                   },
                 ),
                 MoreCard(
                   buttonName: "Profile",
-                  onPressed: () => context.go('/my_profile'),
+                  onPressed: () => context.push('/my_profile'),
                 ),
                 MoreCard(
                   buttonName: "Appointments",
-                  onPressed: () => context.go('/appointments'),
+                  onPressed: () => context.push('/appointments'),
                 ),
                 MoreCard(
                   buttonName: "All Doctors",
-                  onPressed: () => context.go('/doctor_all'),
+                  onPressed: () => context.push('/doctor_all'),
                 ),
                 MoreCard(
                   buttonName: "Blogs",
-                  onPressed: () => context.go('/blogs'),
+                  onPressed: () => context.push('/blogs'),
                 ),
                 MoreCard(
                   buttonName: "About Us",
-                  onPressed: () => context.go('/about'),
+                  onPressed: () => context.push('/about'),
                 ),
                 MoreCard(
                   buttonName: "Logout",
-                  onPressed: () => context.go('/login_page'),
+                  onPressed: () => context.push('/login_page'),
                 ),
               ],
             ),

@@ -17,11 +17,12 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     // Start a timer to navigate after 2 seconds
-    Timer(Duration(seconds: 3), navigateToNextScreen);
+    Timer(Duration(seconds: 2), navigateToNextScreen);
   }
 
   void navigateToNextScreen() {
-    context.go('/intro_one');
+    context.push('/intro_one');
+    // context.push('/home');
   }
 
   @override

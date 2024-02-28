@@ -49,7 +49,7 @@ class BottomAppBars extends StatelessWidget {
                 color: homeBackColor, borderRadius: BorderRadius.circular(50)),
             child: IconButton(
               onPressed: () {
-                context.go('/home');
+                context.push('/home');
               },
               icon: Icon(
                 Icons.home_filled,
@@ -68,7 +68,7 @@ class BottomAppBars extends StatelessWidget {
                 borderRadius: BorderRadius.circular(50)),
             child: IconButton(
               onPressed: () {
-                context.go('/appointments');
+                context.push('/appointments');
               },
               icon: Icon(
                 Icons.view_list_outlined,
@@ -86,7 +86,7 @@ class BottomAppBars extends StatelessWidget {
                 color: blogBackColor, borderRadius: BorderRadius.circular(50)),
             child: IconButton(
               onPressed: () {
-                context.go('/blogs');
+                context.push('/blogs');
               },
               icon: Icon(
                 Icons.tips_and_updates,
@@ -104,7 +104,7 @@ class BottomAppBars extends StatelessWidget {
                 color: moreBackColor, borderRadius: BorderRadius.circular(50)),
             child: IconButton(
               onPressed: () {
-                context.go('/more');
+                context.push('/more');
               },
               icon: Icon(
                 Icons.settings,

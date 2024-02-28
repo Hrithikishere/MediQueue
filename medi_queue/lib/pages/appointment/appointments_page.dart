@@ -23,13 +23,13 @@ class AppointmentsPage extends StatelessWidget {
                 TopAppBar(
                   title: "Appointments",
                   onPressed: () {
-                    context.go('/home');
+                    context.pop();
                   },
                 ),
                 InkWell(
                   child: NextAppointmentCard(),
                   onTap: () {
-                    context.go('/appointment_details');
+                    context.push('/appointment_details');
                   },
                 ),
                 SizedBox(height: 10),
@@ -44,7 +44,7 @@ class AppointmentsPage extends StatelessWidget {
                 SizedBox(height: 10),
                 InkWell(
                   onTap: () {
-                    context.go('/appointment_details');
+                    context.push('/appointment_details');
                   },
                   child: AppointmentCard(
                     doctorName: "Dr. Mohammad Ullah",
@@ -58,7 +58,7 @@ class AppointmentsPage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    context.go('/appointment_details');
+                    context.push('/appointment_details');
                   },
                   child: AppointmentCard(
                     doctorName: "Dr. Mohammad Ullah",
@@ -72,7 +72,7 @@ class AppointmentsPage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    context.go('/appointment_details');
+                    context.push('/appointment_details');
                   },
                   child: AppointmentCard(
                     doctorName: "Dr. Rakib Islam",

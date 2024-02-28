@@ -25,7 +25,7 @@ class BlogsPage extends StatelessWidget {
                 TopAppBar(
                   title: "Blogs",
                   onPressed: () {
-                    context.go('/home');
+                    context.pop();
                   },
                 ),
                 Container(
@@ -36,7 +36,7 @@ class BlogsPage extends StatelessWidget {
                       return InkWell(
                         onTap: () {
                           // print("print before sending ${blogsList[index].id}");
-                          context.go('/blog_desc/${blogsList[index].id}');
+                          context.push('/blog_desc/${blogsList[index].id}');
                         },
                         child: BlogsCard(
                           id: blogsList[index].id,

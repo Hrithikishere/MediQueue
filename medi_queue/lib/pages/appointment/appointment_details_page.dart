@@ -24,7 +24,7 @@ class AppointmentDetails extends StatelessWidget {
                 TopAppBar(
                   title: "Appointment Details",
                   onPressed: () {
-                    context.go('/appointments');
+                    context.pop();
                   },
                 ),
                 Text(
@@ -42,7 +42,7 @@ class AppointmentDetails extends StatelessWidget {
                 //doctor card
                 InkWell(
                   onTap: () {
-                    context.go('/doctor_profile');
+                    context.push('/doctor_profile');
                   },
                   child: Container(
                     height: 100,

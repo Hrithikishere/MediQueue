@@ -29,7 +29,7 @@ class AppointmentCreatePage extends StatelessWidget {
                 TopAppBar(
                     title: "Create Appointment",
                     onPressed: () {
-                      context.go('/home');
+                      context.pop();
                     }),
                 //doctor card
                 Container(
@@ -218,7 +218,7 @@ class AppointmentCreatePage extends StatelessWidget {
                         backgroundColor: secondaryColor,
                       ),
                       onPressed: () {
-                        context.go('/appointments');
+                        context.push('/appointments');
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),

@@ -98,7 +98,7 @@ class NextAppointmentCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50)),
                     child: IconButton(
                       onPressed: () {
-                        context.go('/appointment_details');
+                        context.push('/appointment_details');
                       },
                       icon: Icon(Icons.arrow_forward_ios),
                     ),

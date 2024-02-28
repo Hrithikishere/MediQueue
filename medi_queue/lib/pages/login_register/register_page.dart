@@ -274,7 +274,7 @@ class RegisterPage extends StatelessWidget {
                                           fontWeight: FontWeight.normal,
                                           fontSize: 15.5)),
                               onPressed: () {
-                                context.go('/home');
+                                context.push('/home');
                               }),
                         ),
                       ),
@@ -282,7 +282,7 @@ class RegisterPage extends StatelessWidget {
                       //login text
                       InkWell(
                         onTap: () {
-                          context.go('/login_page');
+                          context.push('/login_page');
                         },
                         child: RichText(
                           text: TextSpan(

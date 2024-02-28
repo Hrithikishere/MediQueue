@@ -36,7 +36,7 @@ class AllDoctorsListPage extends StatelessWidget {
               TopAppBar(
                 title: "All Doctors",
                 onPressed: () {
-                  context.go('/home');
+                  context.pop(context);
                 },
               ),
               //search bar
