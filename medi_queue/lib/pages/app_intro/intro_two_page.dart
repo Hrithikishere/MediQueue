@@ -79,16 +79,16 @@ class IntroTwoPage extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () {
-                      context.push('/intro_one');
+                      context.pop();
                     },
                     child: Text(
-                      "Back",
+                      "Skip",
                       selectionColor: secondaryColor,
                     ),
                   ),
                   Container(
                     height: 70,
-                    width: 100,
+                    width: 70,
                     decoration: BoxDecoration(
                         color: secondaryColor,
                         shape: BoxShape.rectangle,

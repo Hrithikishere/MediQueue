@@ -47,7 +47,7 @@ class MorePage extends StatelessWidget {
                 ),
                 MoreCard(
                   buttonName: "Logout",
-                  onPressed: () => context.push('/login_page'),
+                  onPressed: () => context.go('/login_page'),
                 ),
               ],
             ),

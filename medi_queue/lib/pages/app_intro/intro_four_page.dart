@@ -79,23 +79,23 @@ class IntroFourPage extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () {
-                      context.push('/intro_three');
+                      context.pop();
                     },
                     child: Text(
-                      "Back",
+                      "Skip",
                       selectionColor: secondaryColor,
                     ),
                   ),
                   Container(
                     height: 70,
-                    width: 100,
+                    width: 70,
                     decoration: BoxDecoration(
                         color: secondaryColor,
                         shape: BoxShape.rectangle,
                         borderRadius: BorderRadius.circular(35)),
                     child: IconButton(
                       onPressed: () {
-                        context.push('/login_or_register');
+                        context.go('/login_or_register');
                       },
                       icon: Icon(
                         Icons.arrow_forward_ios_sharp,

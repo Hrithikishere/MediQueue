@@ -90,10 +90,10 @@ class IntroOnePage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(width: 5),
+                  const SizedBox(width: 5),
                   Container(
                     height: 70,
-                    width: 100,
+                    width: 70,
                     decoration: BoxDecoration(
                         color: secondaryColor,
                         shape: BoxShape.rectangle,
