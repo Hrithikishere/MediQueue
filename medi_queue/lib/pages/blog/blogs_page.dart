@@ -16,19 +16,18 @@ class BlogsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Container(
-            margin: EdgeInsets.all(15),
-            child: Column(
-              children: [
-                TopAppBar(
-                  title: "Blogs",
-                  onPressed: () {
-                    context.pop();
-                  },
-                ),
-                Container(
+        child: Container(
+          margin: const EdgeInsets.all(15),
+          child: Column(
+            children: [
+              TopAppBar(
+                title: "Blogs",
+                onPressed: () {
+                  context.pop();
+                },
+              ),
+              Expanded(
+                child: Container(
                   height: MediaQuery.of(context).size.height * 0.9,
                   child: ListView.builder(
                     itemCount: blogsList.length,
@@ -47,9 +46,9 @@ class BlogsPage extends StatelessWidget {
                       );
                     },
                   ),
-                )
-              ],
-            ),
+                ),
+              )
+            ],
           ),
         ),
       ),
