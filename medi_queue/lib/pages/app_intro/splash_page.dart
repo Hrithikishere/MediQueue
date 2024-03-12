@@ -21,8 +21,8 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void navigateToNextScreen() {
-    context.push('/intro_one');
-    // context.push('/home');
+    // context.push('/intro_one');
+    context.push('/login_page');
   }
 
   @override

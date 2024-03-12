@@ -80,7 +80,7 @@ class IntroThreePage extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () {
-                      context.pop();
+                      context.go('/login_or_register');
                     },
                     child: Text(
                       "Skip",
