@@ -6,6 +6,7 @@ class UserProfile {
   String password;
   String imageAddress;
   String phone;
+  int age;
   String gender;
   String address;
   int height;
@@ -22,6 +23,7 @@ class UserProfile {
     this.password,
     this.imageAddress,
     this.phone,
+    this.age,
     this.gender,
     this.address,
     this.height,
@@ -41,6 +43,7 @@ List<UserProfile> usersList = [
     '12345',
     'https://images.squarespace-cdn.com/content/v1/631ba8eed2196a6795698665/e35c4b20-b80a-412f-8048-8ad57c07bd79/2022-02-10-Trinet-Kinh-5690-OneDrive+-+Social+Media.jpg',
     '0185464351',
+    23,
     'Male',
     'Uttar Badda, Dhaka, Bangladesh',
     182,
@@ -50,13 +53,14 @@ List<UserProfile> usersList = [
     [1001, 1003, 1005, 1007],
   ),
   UserProfile(
-    1001,
+    1002,
     'Mst. Rahima',
     'rahima',
     'rahima@gmail.com',
     '12345',
     'http://thispix.com/wp-content/uploads/2015/06/Copy-of-Edit-1798-1-300x300.jpg',
     '0195464351',
+    30,
     'Female',
     'Merul Badda, Dhaka, Bangladesh',
     172,
