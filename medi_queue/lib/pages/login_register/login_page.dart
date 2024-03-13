@@ -1,24 +1,24 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:medi_queue/providers/login_register/login.dart';
+import 'package:medi_queue/providers/login_register/loginProvider.dart';
 
 final _formKey = GlobalKey<FormState>();
 final _username = TextEditingController();
 final _password = TextEditingController();
+FocusNode nodeUsername = FocusNode();
+FocusNode nodePassword = FocusNode();
+FocusNode nodeLogin = FocusNode();
 
 class LoginPage extends ConsumerWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    FocusNode nodeUsername = FocusNode();
-    FocusNode nodePassword = FocusNode();
-    FocusNode nodeLogin = FocusNode();
-
     bool loading;
     loading = false;
     // void _submitForm() {
@@ -186,6 +186,8 @@ class LoginPage extends ConsumerWidget {
                                               fontWeight: FontWeight.normal,
                                               fontSize: 15.5)),
                               onPressed: () async {
+                                SystemChannels.textInput
+                                    .invokeMethod('TextInput.hide');
                                 // _submitForm();
                                 // print(
                                 //     "button pressed ${ref.watch(authProvider)}");
