@@ -1,16 +1,18 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
+import 'package:medi_queue/providers/login_register/login.dart';
 import 'package:medi_queue/util/common/bottomAppBar.dart';
 import 'package:medi_queue/util/common/topAppbar.dart';
 import 'package:medi_queue/util/more_card.dart';
 
-class MorePage extends StatelessWidget {
+class MorePage extends ConsumerWidget {
   const MorePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
@@ -45,9 +47,15 @@ class MorePage extends StatelessWidget {
                   buttonName: "About Us",
                   onPressed: () => context.push('/about'),
                 ),
-                MoreCard(
-                  buttonName: "Logout",
-                  onPressed: () => context.go('/login_page'),
+                Consumer(
+                  builder: (context, ref, child) {
+                    return MoreCard(
+                        buttonName: "Logout",
+                        onPressed: () {
+                          ref.read(authProvider.notifier).logout();
+                          context.go('/login_page');
+                        });
+                  },
                 ),
               ],
             ),
