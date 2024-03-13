@@ -36,6 +36,8 @@ class _SplashPageState extends State<SplashPage> {
 
             Image.asset(
           "assets/icons/splash_logo.png",
+          height: 100,
+          width: 100,
         ),
 
         //next button
