@@ -52,7 +52,7 @@ List<Doctor> doctorList = [
   Doctor(
     1113,
     "Dr. Zakir Khan",
-    "Dentist",
+    "Opthalmologist",
     "FCPS, PGT, BDS, (DDC)\n(EX)Associate Professor & Head\nSpeciality in Orthodontics & Cosmetic dentistry",
     "The digestive system speaks a language I understand. After years of training (MBBS, FCPS, MD), I decipher its whispers to diagnose and treat liver, pancreatic, and other gut issues. At Enam Medical College & Hospital, I double down: guiding patients as a Professor and navigating their digestive journeys as a Gastroenterologist. Whether it's chronic pain, liver concerns, or gut health, every victory fuels my passion. Empowering individuals to reclaim their well-being is my mission.",
     "Qualifications:MBBS, MD(Oncology)\nSpecialty: Cancer Specialist\nLanguage Spoken: Bangla, English\nDesignation: Assistant Professor\nInstitute: National Institute of Cancer Research & Hospital, Mohakhali, Dhaka",
@@ -137,7 +137,7 @@ List<Doctor> doctorList = [
   ),
   Doctor(
     1120,
-    "Dr. Mohammad Siyam",
+    "Dr. Mst. Sima Akter",
     "Ophthalmologist",
     "FCPS, PGT, BDS, (DDC)\n(EX)Associate Professor & Head\nSpeciality in Orthodontics & Cosmetic dentistry",
     "The digestive system speaks a language I understand. After years of training (MBBS, FCPS, MD), I decipher its whispers to diagnose and treat liver, pancreatic, and other gut issues. At Enam Medical College & Hospital, I double down: guiding patients as a Professor and navigating their digestive journeys as a Gastroenterologist. Whether it's chronic pain, liver concerns, or gut health, every victory fuels my passion. Empowering individuals to reclaim their well-being is my mission.",
