@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
 import 'package:medi_queue/framework/helpers/constants/data/doctors.dart';
+import 'package:medi_queue/providers/doctor/allDoctorProvider.dart';
+import 'package:medi_queue/providers/doctor/surgeonDoctorProvider.dart';
 import 'package:medi_queue/util/common/bottomAppBar.dart';
 import 'package:medi_queue/util/common/topAppbar.dart';
 import 'package:medi_queue/util/doctor/doctor_list_item.dart';
 
-class SurgeonListPage extends StatelessWidget {
+class SurgeonListPage extends ConsumerWidget {
   SurgeonListPage({super.key});
 
   // var surgeonList = doctorList
   //     .contains(doctorList.where((doctor) => doctor.desg == "Surgeon").first);
   @override
-  Widget build(BuildContext context) {
-    List<Doctor> surgeonList = [];
-    for (Doctor doctor in doctorList) {
-      if (doctor.desg == "Surgeon") {
-        surgeonList.add(doctor);
-        // print(doctor.name);
-      }
-    }
+  Widget build(BuildContext context, WidgetRef ref) {
     // print(surgeonList);
     return Scaffold(
       backgroundColor: primaryColor,
@@ -44,6 +40,11 @@ class SurgeonListPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: TextField(
+                  onChanged: (value) {
+                    ref
+                        .read(surgeonProvider.notifier)
+                        .filterListByNameSurgeon(value);
+                  },
                   style: TextStyle(color: textLightColor),
                   decoration: InputDecoration(
                     hintText: 'Search',
@@ -69,11 +70,16 @@ class SurgeonListPage extends StatelessWidget {
               const SizedBox(height: 15),
               Flexible(
                 flex: 5,
-                child: ListView.builder(
-                  itemCount: surgeonList.length,
-                  itemBuilder: (context, index) {
-                    return DoctorListItem(
-                      doctor: surgeonList[index],
+                child: Consumer(
+                  builder: (context, ref, child) {
+                    var surgeonsList = ref.watch(surgeonProvider);
+                    return ListView.builder(
+                      itemCount: surgeonsList.length,
+                      itemBuilder: (context, index) {
+                        return DoctorListItem(
+                          doctor: surgeonsList[index],
+                        );
+                      },
                     );
                   },
                 ),

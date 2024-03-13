@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:medi_queue/config/app_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,7 +17,7 @@ import 'package:medi_queue/pages/more_page.dart';
 import 'package:medi_queue/pages/home_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
 import 'package:medi_queue/framework/helpers/constants/data/doctors.dart';
+import 'package:medi_queue/providers/doctor/opthalmologistProvider.dart';
 import 'package:medi_queue/util/common/bottomAppBar.dart';
 import 'package:medi_queue/util/common/topAppbar.dart';
 import 'package:medi_queue/util/doctor/doctor_list_item.dart';
 
-class EyeListPage extends StatelessWidget {
+class EyeListPage extends ConsumerWidget {
   const EyeListPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    List<Doctor> eyeList = [];
-    for (Doctor doctor in doctorList) {
-      if (doctor.desg == "Ophthalmologist") {
-        eyeList.add(doctor);
-        // print(doctor.name);
-      }
-    }
+  Widget build(BuildContext context, WidgetRef ref) {
+    // List<Doctor> eyeList = [];
+    // for (Doctor doctor in doctorList) {
+    //   if (doctor.desg == "Ophthalmologist") {
+    //     eyeList.add(doctor);
+    //     // print(doctor.name);
+    //   }
+    // }
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
@@ -41,6 +43,11 @@ class EyeListPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: TextField(
+                  onChanged: (value) {
+                    ref
+                        .read(opthamologistProvider.notifier)
+                        .filterListByOpthamologistName(value);
+                  },
                   style: TextStyle(color: textLightColor),
                   decoration: InputDecoration(
                     hintText: 'Search',
@@ -66,11 +73,17 @@ class EyeListPage extends StatelessWidget {
               SizedBox(height: 15),
               Flexible(
                 flex: 5,
-                child: ListView.builder(
-                  itemCount: eyeList.length,
-                  itemBuilder: (context, index) {
-                    return DoctorListItem(
-                      doctor: eyeList[index],
+                child: Consumer(
+                  builder: (context, ref, child) {
+                    var opthamologistsList = ref.watch(opthamologistProvider);
+
+                    return ListView.builder(
+                      itemCount: opthamologistsList.length,
+                      itemBuilder: (context, index) {
+                        return DoctorListItem(
+                          doctor: opthamologistsList[index],
+                        );
+                      },
                     );
                   },
                 ),

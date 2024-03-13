@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
 import 'package:medi_queue/framework/helpers/constants/data/doctors.dart';
+import 'package:medi_queue/providers/doctor/cardiologistProvider.dart';
 import 'package:medi_queue/util/common/bottomAppBar.dart';
 import 'package:medi_queue/util/common/topAppbar.dart';
 import 'package:medi_queue/util/doctor/doctor_list_item.dart';
 
-class CardiologitstListPage extends StatelessWidget {
+class CardiologitstListPage extends ConsumerWidget {
   const CardiologitstListPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    List<Doctor> cardiologistList = [];
-    for (Doctor doctor in doctorList) {
-      if (doctor.desg == "Cardiologist") {
-        cardiologistList.add(doctor);
-        // print(doctor.name);
-      }
-    }
+  Widget build(BuildContext context, WidgetRef ref) {
+    // List<Doctor> cardiologistList = [];
+    // for (Doctor doctor in doctorList) {
+    //   if (doctor.desg == "Cardiologist") {
+    //     cardiologistList.add(doctor);
+    //     // print(doctor.name);
+    //   }
+    // }
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
@@ -41,6 +43,11 @@ class CardiologitstListPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: TextField(
+                  onChanged: (value) {
+                    ref
+                        .read(cardiologistProvider.notifier)
+                        .filterListByCardiologitstName(value);
+                  },
                   style: TextStyle(color: textLightColor),
                   decoration: InputDecoration(
                     hintText: 'Search',
@@ -67,11 +74,16 @@ class CardiologitstListPage extends StatelessWidget {
 
               Flexible(
                 flex: 5,
-                child: ListView.builder(
-                  itemCount: cardiologistList.length,
-                  itemBuilder: (context, index) {
-                    return DoctorListItem(
-                      doctor: cardiologistList[index],
+                child: Consumer(
+                  builder: (context, ref, child) {
+                    var cardiologistsList = ref.watch(cardiologistProvider);
+                    return ListView.builder(
+                      itemCount: cardiologistsList.length,
+                      itemBuilder: (context, index) {
+                        return DoctorListItem(
+                          doctor: cardiologistsList[index],
+                        );
+                      },
                     );
                   },
                 ),
