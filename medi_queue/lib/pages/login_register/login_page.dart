@@ -3,21 +3,18 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
-
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
-
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:medi_queue/providers/login_register/login.dart';
 
 final _formKey = GlobalKey<FormState>();
 final _username = TextEditingController();
 final _password = TextEditingController();
 
-class _LoginPageState extends State<LoginPage> {
+class LoginPage extends ConsumerWidget {
+  const LoginPage({super.key});
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     FocusNode nodeUsername = FocusNode();
     FocusNode nodePassword = FocusNode();
     FocusNode nodeLogin = FocusNode();
@@ -164,61 +161,100 @@ class _LoginPageState extends State<LoginPage> {
                       Container(
                         margin: const EdgeInsets.only(
                             bottom: 22, left: 32, right: 32),
-                        constraints: const BoxConstraints(
-                            minHeight: 54, maxHeight: 54, maxWidth: 350),
+                        constraints:
+                            const BoxConstraints(minHeight: 54, maxWidth: 350),
                         //height: 54,
-                        width: 330,
-                        child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: secondaryColor,
-                            ),
-                            focusNode: nodeLogin,
-                            // maximumSize: Size(150.0, 25.0),
-                            child: loading
-                                ? CircularProgressIndicator()
-                                : Text('Login',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleSmall!
-                                        .copyWith(
-                                            color: textLightColor,
-                                            fontWeight: FontWeight.normal,
-                                            fontSize: 15.5)),
-                            onPressed: () {
-                              // _submitForm();
-                              if (_formKey.currentState!.validate()) {
-                                if (_password.text == "password" &&
-                                    _username.text == "admin") {
-                                  loading = true;
-                                  Future.delayed(Duration(seconds: 2), () {
+                        width: 350,
+                        child: Consumer(builder: (context, ref, child) {
+                          AuthState authState = ref.watch(authProvider);
+                          return ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: secondaryColor,
+                              ),
+                              focusNode: nodeLogin,
+                              // maximumSize: Size(150.0, 25.0),
+                              child: authState == AuthState.loading
+                                  ? CircularProgressIndicator(
+                                      color: textLightColor,
+                                    )
+                                  : Text('Login',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall!
+                                          .copyWith(
+                                              color: textLightColor,
+                                              fontWeight: FontWeight.normal,
+                                              fontSize: 15.5)),
+                              onPressed: () async {
+                                // _submitForm();
+                                // print(
+                                //     "button pressed ${ref.watch(authProvider)}");
+
+                                if (_formKey.currentState!.validate()) {
+                                  ref.read(authProvider.notifier).loading();
+                                  // print(
+                                  //     "sending username pass ${ref.watch(authProvider)}");
+
+                                  await ref
+                                      .read(authProvider.notifier)
+                                      .login(_username.text, _password.text);
+                                  // print(
+                                  //     "before checking ------------- ${ref.watch(authProvider)}");
+
+                                  // print("checking if/else");
+                                  if (ref.watch(authProvider) ==
+                                      AuthState.authenticated) {
+                                    // print("if auth ${ref.watch(authProvider)}");
+
                                     _username.clear();
                                     _password.clear();
-                                    context.go('/home');
-                                  });
-                                }
-                                // else if(){
 
-                                // }
-                                else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(15),
+                                    context.go('/home');
+                                  }
+                                  // print("checking if-----------------");
+
+                                  else if (ref.watch(authProvider) ==
+                                      AuthState.unauthenticated) {
+                                    // print(
+                                    //     "else auth ${ref.watch(authProvider)}");
+
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
+                                          child: const Text(
+                                              "Incorrect username or password"),
                                         ),
-                                        child: const Text(
-                                            "Incorrect username or password"),
+                                        elevation: 15.0,
+                                        behavior: SnackBarBehavior.floating,
+                                        backgroundColor: Colors.redAccent,
+                                        // margin: const EdgeInsets.all(10),
                                       ),
-                                      elevation: 15.0,
-                                      behavior: SnackBarBehavior.floating,
-                                      backgroundColor: Colors.redAccent,
-                                      // margin: const EdgeInsets.all(10),
-                                    ),
-                                  );
+                                    );
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
+                                          child: const Text(
+                                              "Something went wrong please try again"),
+                                        ),
+                                        elevation: 15.0,
+                                        behavior: SnackBarBehavior.floating,
+                                        backgroundColor: Colors.amberAccent,
+                                        // margin: const EdgeInsets.all(10),
+                                      ),
+                                    );
+                                  }
                                 }
-                              }
-                            }),
+                              });
+                        }),
                       ),
                     ],
                   ),
