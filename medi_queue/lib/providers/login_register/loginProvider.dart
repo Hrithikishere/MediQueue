@@ -11,6 +11,7 @@ final authProvider =
 class AuthNotifier extends StateNotifier<AuthState> {
   final Ref ref;
   int id = 1001;
+  String name = "";
   List<int> appointmentList = [];
   AuthNotifier(this.ref) : super(AuthState.initial);
 
@@ -45,6 +46,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
     if (userInfo != null && userInfo.password == password) {
       id = userInfo.id;
       appointmentList = userInfo.appointmentList;
+      name = userInfo.name;
       state = AuthState.authenticated;
       // print("set authenticated from func");
       return true;
@@ -65,5 +67,9 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
   List<int> AppointmentList() {
     return appointmentList;
+  }
+
+  String Name() {
+    return name;
   }
 }

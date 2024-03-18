@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
 import 'package:medi_queue/framework/helpers/constants/data/doctors.dart';
+import 'package:medi_queue/providers/login_register/loginProvider.dart';
 import 'package:medi_queue/util/appointment/appointment_card.dart';
 import 'package:medi_queue/util/category/category_card.dart';
 import 'package:medi_queue/util/common/bottomAppBar.dart';
 import 'package:medi_queue/util/doctor/doctor_card.dart';
 import 'package:medi_queue/util/appointment/next_appointment_card.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     List<int> topDoctors = [1111, 1115, 1119, 1121, 1125];
     return Scaffold(
       backgroundColor: primaryColor,
@@ -41,13 +43,19 @@ class HomePage extends StatelessWidget {
                                 .displayLarge!
                                 .copyWith(fontSize: 14),
                           ),
-                          Text(
-                            "Mr. Abdur Rouf",
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayLarge!
-                                .copyWith(fontSize: 20),
-                          ),
+                          Consumer(
+                            builder: (context, ref, child) {
+                              String name =
+                                  ref.watch(authProvider.notifier).Name();
+                              return Text(
+                                name,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displayLarge!
+                                    .copyWith(fontSize: 20),
+                              );
+                            },
+                          )
                         ],
                       ),
                       InkWell(
@@ -148,8 +156,8 @@ class HomePage extends StatelessWidget {
 
                 const SizedBox(height: 15),
 
-                Container(
-                  height: 25,
+                SizedBox(
+                  // height: 25,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -160,7 +168,7 @@ class HomePage extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
-                              .copyWith(fontSize: 18),
+                              .copyWith(fontSize: 17),
                         ),
                       ),
                       TextButton(
@@ -187,11 +195,15 @@ class HomePage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: topDoctors.length,
                     itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: () {
-                          context.push('/doctor_profile/${topDoctors[index]}');
-                        },
-                        child: DoctorCard(id: topDoctors[index]),
+                      return Container(
+                        margin: const EdgeInsets.only(right: 10),
+                        child: InkWell(
+                          onTap: () {
+                            context
+                                .push('/doctor_profile/${topDoctors[index]}');
+                          },
+                          child: DoctorCard(id: topDoctors[index]),
+                        ),
                       );
                     },
                   ),
