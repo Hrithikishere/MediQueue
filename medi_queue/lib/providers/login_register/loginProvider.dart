@@ -10,7 +10,8 @@ final authProvider =
 
 class AuthNotifier extends StateNotifier<AuthState> {
   final Ref ref;
-  String id = "";
+  int id = 1001;
+  List<int> appointmentList = [];
   AuthNotifier(this.ref) : super(AuthState.initial);
 
   void loading() {
@@ -22,19 +23,28 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
     await Future.delayed(Duration(seconds: 3));
     UserProfile? findUser(String username) {
-      UserProfile? user =
-          usersList.firstWhere((user) => user.username == username);
-      if (user != null) {
-        return user;
-      } else {
+      try {
+        return usersList.singleWhere(
+          (user) => user.username.toLowerCase() == username.toLowerCase(),
+          // orElse: () => null,
+        );
+      } catch (e) {
         return null;
       }
     }
 
     var userInfo = findUser(username);
+    // if (userInfo == null) {
+    //   print("Got Nullll");
+    //   print(username);
+    //   print(password);
+    // } else {
+    //   print("${userInfo.username}, ${userInfo.password}");
+    // }
 
     if (userInfo != null && userInfo.password == password) {
-      id = username;
+      id = userInfo.id;
+      appointmentList = userInfo.appointmentList;
       state = AuthState.authenticated;
       // print("set authenticated from func");
       return true;
@@ -49,7 +59,11 @@ class AuthNotifier extends StateNotifier<AuthState> {
     state = AuthState.unauthenticated;
   }
 
-  String username() {
+  int username() {
     return id;
+  }
+
+  List<int> AppointmentList() {
+    return appointmentList;
   }
 }
