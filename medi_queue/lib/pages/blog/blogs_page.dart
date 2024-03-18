@@ -32,16 +32,19 @@ class BlogsPage extends StatelessWidget {
                   child: ListView.builder(
                     itemCount: blogsList.length,
                     itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: () {
-                          // print("print before sending ${blogsList[index].id}");
-                          context.push('/blog_desc/${blogsList[index].id}');
-                        },
-                        child: BlogsCard(
-                          id: blogsList[index].id,
-                          title: blogsList[index].title,
-                          doctorId: blogsList[index].postedBy,
-                          postedTime: blogsList[index].postedTime,
+                      return Container(
+                        margin: const EdgeInsets.only(bottom: 10),
+                        child: InkWell(
+                          onTap: () {
+                            // print("print before sending ${blogsList[index].id}");
+                            context.push('/blog_desc/${blogsList[index].id}');
+                          },
+                          child: BlogsCard(
+                            id: blogsList[index].id,
+                            title: blogsList[index].title,
+                            doctorId: blogsList[index].postedBy,
+                            postedTime: blogsList[index].postedTime,
+                          ),
                         ),
                       );
                     },
