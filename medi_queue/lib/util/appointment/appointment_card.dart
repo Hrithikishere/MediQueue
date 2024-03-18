@@ -1,25 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
+import 'package:medi_queue/framework/helpers/constants/data/doctors.dart';
+import 'package:intl/intl.dart';
+
+import '../../framework/helpers/constants/data/appointments.dart';
 
 class AppointmentCard extends StatelessWidget {
-  AppointmentCard(
-      {required this.doctorName,
-      required this.doctorType,
-      required this.time,
-      required this.date,
-      required this.buttonColor,
-      required this.month,
-      required this.buttonName,
-      super.key});
-  String doctorName;
-  String doctorType;
-  String time;
-  String date;
-  String month;
-  String buttonName;
-  Color buttonColor;
+  AppointmentCard({required this.appointmentId, super.key});
+  int appointmentId;
   @override
   Widget build(BuildContext context) {
+    Color buttonColor = Colors.transparent;
+    String buttonName = "Pending";
+    var appointmentInfo =
+        appointmentList.singleWhere((element) => element.id == appointmentId);
+    String day = DateFormat('dd').format(appointmentInfo.date);
+    String monthName = DateFormat('MMM').format(appointmentInfo.date);
+
+    if (appointmentInfo.status == "Approved") {
+      buttonColor = Colors.green;
+      buttonName = "Approved";
+    } else if (appointmentInfo.status == "Missed") {
+      buttonColor = Colors.red;
+      buttonName = "Missed";
+    } else if (appointmentInfo.status == "Done") {
+      buttonColor = Colors.blue;
+      buttonName = "Done";
+    }
+    Doctor doctorInfo = doctorList.singleWhere(
+        (element) => element.id == appointmentInfo.appointedDoctorId);
+
     return Container(
       height: 120,
       padding: const EdgeInsets.all(15),
@@ -51,7 +61,7 @@ class AppointmentCard extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 5),
                         child: Text(
-                          date,
+                          day,
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
@@ -61,7 +71,7 @@ class AppointmentCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        month,
+                        monthName,
                         style:
                             Theme.of(context).textTheme.displayLarge!.copyWith(
                                   fontSize: 15,
@@ -80,7 +90,7 @@ class AppointmentCard extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 3),
                           child: Text(
-                            doctorName,
+                            doctorInfo.name,
                             maxLines: 3,
                             softWrap: true,
                             style: Theme.of(context)
@@ -91,7 +101,7 @@ class AppointmentCard extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          doctorType,
+                          doctorInfo.desg,
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
@@ -117,11 +127,12 @@ class AppointmentCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      time,
+                      appointmentInfo.time,
                       style: Theme.of(context).textTheme.displayLarge!.copyWith(
                             fontSize: 12,
                           ),
                     ),
+                    //status button
                     Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 15, vertical: 5),
