@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
 import 'package:medi_queue/framework/helpers/constants/data/user_profile.dart';
-import 'package:medi_queue/providers/login_register/login.dart';
+import 'package:medi_queue/providers/login_register/loginProvider.dart';
 import 'package:medi_queue/util/common/bottomAppBar.dart';
 import 'package:medi_queue/util/common/text_description_card.dart';
 import 'package:medi_queue/util/common/topAppbar.dart';
@@ -22,9 +22,9 @@ class MyProfilePage extends ConsumerWidget {
           child: Container(
             margin: EdgeInsets.all(15),
             child: Consumer(builder: (context, ref, child) {
-              var username = ref.watch(authProvider.notifier).id;
+              var id = ref.watch(authProvider.notifier).id;
               UserProfile userInfo =
-                  usersList.firstWhere((user) => user.username == username);
+                  usersList.firstWhere((user) => user.id == id);
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
