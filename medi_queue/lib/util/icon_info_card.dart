@@ -28,29 +28,32 @@ class IconInfoCard extends StatelessWidget {
           ),
 
           //rating value
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                heading,
-                style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                      fontSize: 10,
-                      color: textDimColor,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  heading,
+                  style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                        fontSize: 10,
+                        color: textDimColor,
+                      ),
+                ),
+                SizedBox(
+                  height: 2,
+                ),
+                Text(
+                  details,
+                  softWrap: true,
+                  style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                        fontSize: 15,
+                      ),
+                ),
+                SizedBox(
+                    // height: 10,
                     ),
-              ),
-              SizedBox(
-                height: 2,
-              ),
-              Text(
-                details,
-                style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                      fontSize: 15,
-                    ),
-              ),
-              SizedBox(
-                  // height: 10,
-                  ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
