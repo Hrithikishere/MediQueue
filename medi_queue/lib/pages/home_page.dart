@@ -29,7 +29,7 @@ class HomePage extends ConsumerWidget {
               children: [
                 //appbar
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 25),
+                  padding: const EdgeInsets.only(top: 25, bottom: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -75,12 +75,8 @@ class HomePage extends ConsumerWidget {
                 ),
 
                 //card
-                InkWell(
-                    onTap: () {
-                      context.push('/appointment_details');
-                    },
-                    child: NextAppointmentCard()),
-                const SizedBox(height: 15),
+                NextAppointmentCard(),
+                // const SizedBox(height: 15),
                 //search bar
 
                 Container(

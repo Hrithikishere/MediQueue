@@ -30,16 +30,11 @@ class AppointmentsPage extends ConsumerWidget {
                     context.pop();
                   },
                 ),
-                InkWell(
-                  child: Consumer(builder: (context, ref, child) {
-                    ref.watch(authProvider.notifier).username();
-                    return NextAppointmentCard();
-                  }),
-                  onTap: () {
-                    context.push('/appointment_details');
-                  },
-                ),
-                const SizedBox(height: 10),
+                Consumer(builder: (context, ref, child) {
+                  ref.watch(authProvider.notifier).username();
+                  return NextAppointmentCard();
+                }),
+                // const SizedBox(height: 10),
                 Text(
                   "Appointments",
                   textAlign: TextAlign.left,
@@ -54,7 +49,8 @@ class AppointmentsPage extends ConsumerWidget {
                   try {
                     final user = usersList
                         .singleWhere((element) => element.id == usersId);
-                    user.appointmentList.sort();
+                    user.appointmentList.sort((a, b) => b.compareTo(a));
+                    // user.appointmentList.removeAt(0);
                     if (user.appointmentList.isNotEmpty) {
                       return ListView.builder(
                         shrinkWrap: true,
@@ -62,7 +58,8 @@ class AppointmentsPage extends ConsumerWidget {
                         itemBuilder: (context, index) {
                           return InkWell(
                             onTap: () {
-                              context.push('/appointment_details');
+                              context.push(
+                                  '/appointment_details/${user.appointmentList[index]}');
                             },
                             child: AppointmentCard(
                               appointmentId: user.appointmentList[index],
@@ -88,7 +85,6 @@ class AppointmentsPage extends ConsumerWidget {
                       );
                     }
                   } catch (e) {
-                    print("Error: $usersId");
                     return Center(
                       child: Container(
                         margin: EdgeInsets.only(top: 50),
