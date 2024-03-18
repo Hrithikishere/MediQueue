@@ -1,16 +1,31 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:medi_queue/framework/helpers/constants/colors.dart';
 import 'package:medi_queue/util/common/bottomAppBar.dart';
 import 'package:medi_queue/util/common/topAppbar.dart';
 import 'package:medi_queue/util/icon_info_card.dart';
 
+import '../../framework/helpers/constants/data/appointments.dart';
+import '../../framework/helpers/constants/data/doctors.dart';
+
 class AppointmentDetails extends StatelessWidget {
-  const AppointmentDetails({super.key});
+  AppointmentDetails({required this.id, super.key});
+
+  int id;
 
   @override
   Widget build(BuildContext context) {
+    Appointment appointmentInfo =
+        appointmentList.singleWhere((element) => element.id == id);
+
+    Doctor doctorInfo = doctorList.singleWhere(
+        (element) => element.id == appointmentInfo.appointedDoctorId);
+
+    String appointmentDate =
+        DateFormat('dd MMM yyyy, h.mm a').format(appointmentInfo.date);
+
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
@@ -37,12 +52,12 @@ class AppointmentDetails extends StatelessWidget {
                       .displayLarge!
                       .copyWith(fontSize: 17, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 //doctor card
                 InkWell(
                   onTap: () {
-                    context.push('/doctor_profile');
+                    context.push('/doctor_profile/${doctorInfo.id}');
                   },
                   child: Container(
                     height: 100,
@@ -56,8 +71,7 @@ class AppointmentDetails extends StatelessWidget {
                       children: [
                         ClipOval(
                           child: CachedNetworkImage(
-                            imageUrl:
-                                'https://static.vecteezy.com/system/resources/thumbnails/028/287/384/small/a-mature-indian-male-doctor-on-a-white-background-ai-generated-photo.jpg',
+                            imageUrl: doctorInfo.imageAddress,
                             placeholder: (context, url) =>
                                 const CircularProgressIndicator(),
                             errorWidget: (context, url, error) =>
@@ -76,7 +90,7 @@ class AppointmentDetails extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Dr. Md. Sayeedul Islam",
+                                doctorInfo.name,
                                 maxLines: 2,
                                 overflow: TextOverflow
                                     .ellipsis, // Handle overflow gracefully
@@ -89,7 +103,7 @@ class AppointmentDetails extends StatelessWidget {
                                         fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "Dentist",
+                                doctorInfo.desg,
                                 style: Theme.of(context)
                                     .textTheme
                                     .displayLarge!
@@ -119,50 +133,49 @@ class AppointmentDetails extends StatelessWidget {
                 SizedBox(height: 15),
                 IconInfoCard(
                     heading: "Appointment ID",
-                    details: "A322655",
+                    details: appointmentInfo.id.toString(),
                     iconData: Icons.info_rounded),
                 SizedBox(height: 10),
 
                 IconInfoCard(
                     heading: "Status",
-                    details: "Approved",
+                    details: appointmentInfo.status,
                     iconData: Icons.done),
                 SizedBox(height: 10),
 
                 IconInfoCard(
                     heading: "Date and Time",
-                    details: "25 Jan 2024, 8.00 PM",
+                    details: appointmentDate,
                     iconData: Icons.timer),
                 SizedBox(height: 10),
 
                 IconInfoCard(
                     heading: "Serial",
-                    details: "05",
+                    details: appointmentInfo.serial.toString(),
                     iconData: Icons.list_rounded),
                 SizedBox(height: 10),
 
                 IconInfoCard(
                     heading: "Room No.",
-                    details: "512",
+                    details: appointmentInfo.serial.toString(),
                     iconData: Icons.door_front_door),
                 SizedBox(height: 10),
 
                 IconInfoCard(
                     heading: "Type",
-                    details: "New Patient",
+                    details: appointmentInfo.patientType,
                     iconData: Icons.people_outline_outlined),
                 SizedBox(height: 10),
 
                 IconInfoCard(
                     heading: "Hotline",
-                    details: "09610009614",
+                    details: appointmentInfo.hotlineNumber,
                     iconData: Icons.phone),
                 SizedBox(height: 10),
 
                 IconInfoCard(
                     heading: "Location",
-                    details:
-                        "Ibn Sina Diagnostic & Consultation , \nuttara,  Garib-E-Newaz Avenue, \nSector#13, Uttara, Dhaka-1230",
+                    details: appointmentInfo.location,
                     iconData: Icons.location_history),
               ],
             ),

@@ -17,13 +17,14 @@ class NextAppointmentCard extends ConsumerWidget {
       builder: (context, ref, child) {
         try {
           var userId = ref.watch(authProvider.notifier).username();
+
           List<Appointment> allAppointment = [];
           for (var appointment in appointmentList) {
             if (appointment.patientId == userId) {
               allAppointment.add(appointment);
             }
           }
-          allAppointment.sort((a, b) => a.date.compareTo(b.date));
+          allAppointment.sort((a, b) => b.date.compareTo(a.date));
 
           var doctorInfo = doctorList.firstWhere(
               (element) => element.id == allAppointment[0].appointedDoctorId);
@@ -31,6 +32,7 @@ class NextAppointmentCard extends ConsumerWidget {
               DateFormat('dd MMM yyyy, h.mm a').format(allAppointment[0].date);
           return Container(
             height: 170,
+            margin: EdgeInsets.only(bottom: 15),
             decoration: BoxDecoration(
                 color: glassyColor, borderRadius: BorderRadius.circular(10)),
             child: Column(
@@ -124,7 +126,8 @@ class NextAppointmentCard extends ConsumerWidget {
                               borderRadius: BorderRadius.circular(50)),
                           child: IconButton(
                             onPressed: () {
-                              context.push('/appointment_details');
+                              context.push(
+                                  '/appointment_details/${allAppointment[0].id}');
                             },
                             icon: Icon(Icons.arrow_forward_ios),
                           ),
@@ -137,7 +140,7 @@ class NextAppointmentCard extends ConsumerWidget {
             ),
           );
         } catch (e) {
-          print("object");
+          // print("object");
           return Container();
         }
       },

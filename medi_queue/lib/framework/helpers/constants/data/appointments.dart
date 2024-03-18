@@ -32,7 +32,7 @@ List<Appointment> appointmentList = [
     1001,
     1111,
     1001,
-    'Approved',
+    'Done',
     DateTime(2024, 01, 1), // Random date within year 2024
     '8.00 PM',
     5,
@@ -72,7 +72,7 @@ List<Appointment> appointmentList = [
     1114,
     1002,
 
-    'Approved',
+    'Done',
     DateTime(2024, 4, 20), // Random date within year 2024
     '8.00 PM',
     5,
@@ -114,7 +114,7 @@ List<Appointment> appointmentList = [
     1117,
     1001,
 
-    'Approved',
+    'Done',
     DateTime(2024, 7, 12), // Random date within year 2024
     '8.00 PM',
     5,
@@ -142,7 +142,7 @@ List<Appointment> appointmentList = [
     1119,
     1001,
 
-    'Missed',
+    'Approved',
     DateTime(2024, 9, 5), // Random date within year 2024
     '8.00 PM',
     5,

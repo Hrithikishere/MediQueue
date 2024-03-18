@@ -41,7 +41,7 @@ class AppointmentCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Flexible(
-            flex: 3,
+            flex: 4,
             child: Row(
               children: [
                 //date
@@ -119,7 +119,7 @@ class AppointmentCard extends StatelessWidget {
 
           //time and status
           Flexible(
-            flex: 1,
+            flex: 2,
             child: Container(
               padding: const EdgeInsets.only(top: 2),
               child: Column(
