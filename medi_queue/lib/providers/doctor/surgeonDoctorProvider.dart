@@ -30,6 +30,6 @@ class SurgeonNotifier extends StateNotifier<List<Doctor>> {
       }
     }
     state = filteredList;
-    print(state);
+    // print(state);
   }
 }

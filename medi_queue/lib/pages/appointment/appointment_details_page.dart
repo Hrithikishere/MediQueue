@@ -77,7 +77,7 @@ class AppointmentDetails extends StatelessWidget {
                             errorWidget: (context, url, error) =>
                                 const Icon(Icons.error),
                             maxHeightDiskCache:
-                                100, // Set the maximum height for disk-cached images
+                                150, // Set the maximum height for disk-cached images
                             height: 65,
                             width: 65,
                             fit: BoxFit.cover,
@@ -119,7 +119,7 @@ class AppointmentDetails extends StatelessWidget {
                   ),
                 ),
                 //ratings
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Text(
                   "Other Details",
                   maxLines: 2,
@@ -130,48 +130,48 @@ class AppointmentDetails extends StatelessWidget {
                       .displayLarge!
                       .copyWith(fontSize: 17, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 IconInfoCard(
                     heading: "Appointment ID",
                     details: appointmentInfo.id.toString(),
                     iconData: Icons.info_rounded),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 IconInfoCard(
                     heading: "Status",
                     details: appointmentInfo.status,
                     iconData: Icons.done),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 IconInfoCard(
                     heading: "Date and Time",
                     details: appointmentDate,
                     iconData: Icons.timer),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 IconInfoCard(
                     heading: "Serial",
                     details: appointmentInfo.serial.toString(),
                     iconData: Icons.list_rounded),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 IconInfoCard(
                     heading: "Room No.",
-                    details: appointmentInfo.serial.toString(),
+                    details: appointmentInfo.roomNumber.toString(),
                     iconData: Icons.door_front_door),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 IconInfoCard(
                     heading: "Type",
                     details: appointmentInfo.patientType,
                     iconData: Icons.people_outline_outlined),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 IconInfoCard(
                     heading: "Hotline",
                     details: appointmentInfo.hotlineNumber,
                     iconData: Icons.phone),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 
                 IconInfoCard(
                     heading: "Location",

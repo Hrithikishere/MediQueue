@@ -22,7 +22,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
   Future<bool> login(String username, String password) async {
     // state = AuthState.loading;
 
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 1));
     UserProfile? findUser(String username) {
       try {
         return usersList.singleWhere(

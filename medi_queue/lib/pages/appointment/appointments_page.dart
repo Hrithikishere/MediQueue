@@ -18,33 +18,33 @@ class AppointmentsPage extends ConsumerWidget {
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TopAppBar(
-                  title: "Appointments",
-                  onPressed: () {
-                    context.pop();
-                  },
-                ),
-                Consumer(builder: (context, ref, child) {
-                  ref.watch(authProvider.notifier).username();
-                  return NextAppointmentCard();
-                }),
-                // const SizedBox(height: 10),
-                Text(
-                  "Appointments",
-                  textAlign: TextAlign.left,
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayLarge!
-                      .copyWith(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 10),
-                Consumer(builder: (context, ref, child) {
+        child: Container(
+          margin: const EdgeInsets.all(15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TopAppBar(
+                title: "Appointments",
+                onPressed: () {
+                  context.pop();
+                },
+              ),
+              Consumer(builder: (context, ref, child) {
+                ref.watch(authProvider.notifier).username();
+                return NextAppointmentCard();
+              }),
+              // const SizedBox(height: 10),
+              Text(
+                "Appointments",
+                textAlign: TextAlign.left,
+                style: Theme.of(context)
+                    .textTheme
+                    .displayLarge!
+                    .copyWith(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              Flexible(
+                child: Consumer(builder: (context, ref, child) {
                   final usersId = ref.watch(authProvider.notifier).username();
                   try {
                     final user = usersList
@@ -102,9 +102,9 @@ class AppointmentsPage extends ConsumerWidget {
                     );
                   }
                 }),
-                const SizedBox(height: 10),
-              ],
-            ),
+              ),
+              // const SizedBox(height: 10),
+            ],
           ),
         ),
       ),
